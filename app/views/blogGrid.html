@@ -1,0 +1,13 @@
+<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+  <ul angular-grid="awesomeThings" ag-grid-width="300" ag-gutter-size="12" ag-angular-grid-id="gallery" ag-refresh-on-img-load="true">
+    <li data-ng-repeat="pic in awesomeThings" class="grid img-responsive" data-ng-clock>
+      <img ng-src="{{pic.imgPath}}" class="grid-img" />
+      <h3>{{pic.title}}</h3>
+      <div><span class="glyphicon glyphicon-calendar" style="margin-right:10px;">10th feb 2014</span><span class="glyphicon glyphicon-comment" style="margin-right:10px;">13</span><span class="glyphicon glyphicon-tasks"></span></div>
+      <div class="desc">{{pic.desc}}</div>
+      <div>
+        <p>Read More</p>
+      </div>
+    </li>
+  </ul>
+</div>
