@@ -40,6 +40,7 @@ module.exports = function(config) {
       'bower_components/matches-selector/matches-selector.js',
       'bower_components/angular-masonry/angular-masonry.js',
       'bower_components/angulargrid/angulargrid.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

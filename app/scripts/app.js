@@ -13,6 +13,7 @@
 
 angular
   .module('dietBlog', [
+    'ui.bootstrap',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -39,13 +40,14 @@ angular
       url: '/home',
       templateUrl: "views/home.html"
     }).state('main.about', {
-      url: '/home',
+      url: '/about',
       templateUrl: "views/about.html"
     }).state('main.blog', {
       url: '/blog',
       views: {
         '': {
-          templateUrl: "views/blog.html"
+          templateUrl: "views/blog.html",
+          controller: 'MainCtrl'
         },
         'grid@main.blog': {
           templateUrl: "views/blogGrid.html",
@@ -53,6 +55,10 @@ angular
         },
         'right@main.blog': {
           templateUrl: "views/blogRight.html"
+        },
+        'details@main.blog': {
+          templateUrl: "views/blogDetails.html",
+          controller: "blogDetailsCtrl"
         }
       }
     });

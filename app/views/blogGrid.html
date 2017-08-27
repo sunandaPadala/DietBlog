@@ -1,13 +1,102 @@
-<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
   <ul angular-grid="awesomeThings" ag-grid-width="300" ag-gutter-size="12" ag-angular-grid-id="gallery" ag-refresh-on-img-load="true">
     <li data-ng-repeat="pic in awesomeThings" class="grid img-responsive" data-ng-clock>
-      <img ng-src="{{pic.imgPath}}" class="grid-img" />
-      <h3>{{pic.title}}</h3>
-      <div><span class="glyphicon glyphicon-calendar" style="margin-right:10px;">10th feb 2014</span><span class="glyphicon glyphicon-comment" style="margin-right:10px;">13</span><span class="glyphicon glyphicon-tasks"></span></div>
-      <div class="desc">{{pic.desc}}</div>
-      <div>
-        <p>Read More</p>
+      <img ng-src="{{pic.imgPath}}" class="grid-img img-responsive" style="margin-bottom:20px;" />
+      <h2><a style="color:black;">{{pic.title}}</a></h2>
+      <ul class="below-blog-list">
+        <li>
+          <a href="javascript:void(0)"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)"> <i class="fa fa-calendar-o" aria-hidden="true"></i> January 10, 2017 </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)"> <i class="fa fa-comment-o" aria-hidden="true"></i> 3 Comment </a>
+        </li>
+      </ul>
+      <p>{{pic.desc}}</p>
+      <div class="bottom-blog">
+        <a href="blogDetail.html" class="continue-read"> Continue Reading <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+        <ul class="social">
+          <li>
+            <a href="javascript:void(0)"> <i class="fa fa-facebook"></i> </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"> <i class="fa fa-twitter"></i> </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"> <i class="fa fa-google-plus"></i> </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"> <i class="fa fa-linkedin"></i> </a>
+          </li>
+        </ul>
       </div>
     </li>
   </ul>
+  <div class="blog-pagination pad-bottom-small">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">5</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
+<!-- <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+  <div class="main">
+    <div id="main-content" class="content-box blog-masonry-with-sidebar right-sidebar pad-top-big pr">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding">
+            <div class="blog_grid_masonry">
+            <article class="outer-blog-box pr pad-bottom-small col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="blog-img blog-media"><img src="images/1920x1600.png" alt="images" /></div>
+                <div class="blog-captions">
+                  <h2 class="blog-title"> <a href="blogDetail.html">Only centuries Make Scrambled it specimen!</a> </h2>
+                  <ul class="below-blog-list">
+                    <li>
+                      <a href="javascript:void(0)"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)"> <i class="fa fa-calendar-o" aria-hidden="true"></i> January 10, 2017 </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)"> <i class="fa fa-comment-o" aria-hidden="true"></i> 3 Comment </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)"> <i class="fa fa-heart-o" aria-hidden="true"></i> Lifestyle </a>
+                    </li>
+                  </ul>
+                  <p> Passage of Lorem Ipsum of passages of Lorem Ipsum available. </p>
+                  <div class="bottom-blog">
+                    <a href="blogDetail.html" class="continue-read"> Continue Reading <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+                    <ul class="social">
+                      <li>
+                        <a href="javascript:void(0)"> <i class="fa fa-facebook"></i> </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)"> <i class="fa fa-twitter"></i> </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)"> <i class="fa fa-google-plus"></i> </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)"> <i class="fa fa-linkedin"></i> </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -38,6 +38,8 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
 
 
+
+
 /* ==================================================
     1. HTML5 display-role reset for older browsers
 ===================================================== */
@@ -115,6 +117,8 @@ a:focus {
 
 
 
+
+
 /* 1.1 css reset */
 
 .clear {
@@ -141,6 +145,8 @@ img {
   max-width: 100%;
   vertical-align: top;
 }
+
+
 
 
 
@@ -302,6 +308,8 @@ blockquote p span {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
 }
+
+
 
 
 
@@ -494,6 +502,8 @@ blockquote p span {
 
 
 
+
+
 /* Sub Menu */
 
 .menuBar .navbar-nav>li.menu-item-has-children {
@@ -645,11 +655,15 @@ blockquote p span {
 
 
 
+
+
 /* Sub Menu */
 
 .menu-wrap {
   display: none;
 }
+
+
 
 
 
@@ -748,6 +762,8 @@ blockquote p span {
 
 
 
+
+
 /* =============================================
     4. Main - Content 'No Sidebar' css
 ================================================ */
@@ -814,7 +830,7 @@ blockquote p span {
 }
 
 .below-blog-list li a {
-  font-size: 14px;
+  font-size: 11px;
   color: #b9b9b9;
   text-transform: uppercase;
   font-family: 'Source Sans Pro', sans-serif;
@@ -1220,6 +1236,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     5. Left & Right Sidebar CSS
 ====================================== */
@@ -1347,6 +1365,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     6. Blog - list CSS
 ====================================== */
@@ -1365,6 +1385,8 @@ blockquote p span {
   position: relative;
   top: -14px;
 }
+
+
 
 
 
@@ -1388,6 +1410,8 @@ blockquote p span {
 .blog-masonry-with-sidebar .blog_grid_masonry .below-blog-list li {
   margin-right: 9px;
 }
+
+
 
 
 
@@ -1436,6 +1460,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     9. Blog - Grid With Sidebar CSS
 ====================================== */
@@ -1473,6 +1499,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     10. Blog - Masonry CSS
 ====================================== */
@@ -1484,6 +1512,8 @@ blockquote p span {
 .blog_grid_masonry .blog-img-large {
   padding-top: 86.7%;
 }
+
+
 
 
 
@@ -1546,6 +1576,8 @@ blockquote p span {
 .aboutus-info .social li:first-child {
   margin: 0;
 }
+
+
 
 
 
@@ -1686,6 +1718,8 @@ blockquote p span {
 .error-bottom .home-page-link:hover {
   background-color: #a1cc3b;
 }
+
+
 
 
 
@@ -1973,6 +2007,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     14. Blog Detail with Sidebar CSS
 ====================================== */
@@ -1988,6 +2024,8 @@ blockquote p span {
 .blog-details-with-sidebar.blog-details .blog-captions blockquote {
   padding: 10px 10px 10px 25px;
 }
+
+
 
 
 
@@ -2065,6 +2103,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     15. Back To Top CSS
 ====================================== */
@@ -2117,6 +2157,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     16. header with Logo on right CSS
 ====================================== */
@@ -2130,6 +2172,8 @@ blockquote p span {
 .full-header-right .navbar-header {
   float: right;
 }
+
+
 
 
 
@@ -2219,6 +2263,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     18. header centered CSS
 ====================================== */
@@ -2243,6 +2289,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     19. header divider CSS
 ====================================== */
@@ -2250,6 +2298,8 @@ blockquote p span {
 .header-divider .menuBar .navbar-default .navbar-nav>li>a {
   border-right: 1px solid rgba(255, 255, 255, 0.22);
 }
+
+
 
 
 
@@ -2280,6 +2330,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     21. full header Logo right CSS
 ====================================== */
@@ -2288,6 +2340,8 @@ blockquote p span {
 .full-head-logo-right .home-menu {
   float: right;
 }
+
+
 
 
 
@@ -2305,6 +2359,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     23. footer logo only CSS
 ====================================== */
@@ -2312,6 +2368,8 @@ blockquote p span {
 .footer-logo-only .footer-logo {
   margin: 0;
 }
+
+
 
 
 
@@ -2330,6 +2388,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     25. footer logo bottom right CSS
 ====================================== */
@@ -2345,6 +2405,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     26. blog grid three column CSS
 ====================================== */
@@ -2356,6 +2418,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     27. blog grid four column CSS
 ====================================== */
@@ -2364,6 +2428,8 @@ blockquote p span {
 .blog-masonry-four-column .blog_grid_masonry .outer-blog-box {
   width: 25%;
 }
+
+
 
 
 
@@ -2443,6 +2509,8 @@ blockquote p span {
 
 
 
+
+
 /* ===================================
     29. Blockquote page CSS
 ====================================== */
@@ -2451,6 +2519,8 @@ blockquote p span {
   width: 100%;
   padding: 26px 40px;
 }
+
+
 
 
 
@@ -2466,6 +2536,8 @@ blockquote p span {
 #popup-gallery .no-padding {
   padding: 0 !important;
 }
+
+
 
 
 
