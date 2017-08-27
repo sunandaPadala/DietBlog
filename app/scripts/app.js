@@ -55,11 +55,11 @@ angular
         },
         'right@main.blog': {
           templateUrl: "views/blogRight.html"
-        },
-        'details@main.blog': {
-          templateUrl: "views/blogDetails.html",
-          controller: "blogDetailsCtrl"
         }
       }
+    }).state('main.blogDetails', {
+      url: '/blogDetails',
+      templateUrl: "views/blogDetails.html",
+      controller: "blogDetailsCtrl"
     });
   });
