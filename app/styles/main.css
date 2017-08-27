@@ -6,3 +6,7 @@
 .grid-img {
   width: 100%;
 }
+
+.bottom-blog:hover {
+  cursor: pointer;
+}
