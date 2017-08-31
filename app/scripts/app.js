@@ -20,7 +20,8 @@ angular
     'ngResource',
     'ngTouch',
     'ui.router',
-    'angularGrid'
+    'angularGrid',
+    '720kb.socialshare'
   ]).config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/blog');
     $stateProvider.state('main', {
