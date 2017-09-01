@@ -26,16 +26,31 @@ angular
     $stateProvider.state('main', {
       abstract: true,
       url: "",
+      resolve: { 
+      mainviewData: function() { 
+        return { menuOpen: false }; 
+      } 
+    },
       views: {
         '': {
-          templateUrl: "views/main.html"
+          templateUrl: "views/main.html",
+          controller:"mainviewCtrl"
+
         },
         'nav@main': {
-          templateUrl: "views/nav.html"
+          templateUrl: "views/about.html",
+          controller:"mainviewCtrl"
         },
         'footer@main': {
-          templateUrl: "views/footer.html"
-        }
+          templateUrl: "views/footer.html",
+        controller:"mainviewCtrl"
+
+        },
+        'mobileMenu@main':{
+          templateUrl: "views/mobilemenu.html",
+        controller:"mainviewCtrl"
+
+        },
       }
     }).state('main.home', {
       url: '/home',
