@@ -29,7 +29,11 @@ angular
       url: "",
       resolve: { 
       mainviewData: function() { 
-        return { menuOpen: false }; 
+        return { 
+          menuOpen: false,
+          scrollview: false,
+          headerview: false
+        }; 
       } 
     },
       views: {
