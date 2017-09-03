@@ -678,6 +678,7 @@ blockquote p span {
 .banner-static {
   height: 595px;
   background-image: url('../images/1920x595.png');
+     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/1920x595.png) fixed center center;
   background-position: top left;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2624,4 +2625,16 @@ blockquote p span {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+}
+ul.categ li{
+  background: rgb(247, 247, 247) !important;
+}
+/*ul.categ li:hover{
+  background: rgb(247, 247, 247) !important;
+}
+.categ li:hover{
+  background: rgb(247, 247, 247);
+}*/
+.menu-mob ul li:hover{
+  background: rgb(247, 247, 247) !important;
 }

@@ -22,7 +22,11 @@ angular
     'ui.router',
     'angularGrid',
     '720kb.socialshare'
-  ]).config(function($stateProvider, $urlRouterProvider) {
+  ]).constant('configSettings', {
+   'baseUrl': 'https://right-my-diet.herokuapp.com/',
+   'someElseSetting': 'settingValue'
+   //other setting will also be there.
+}).config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/blog');
     $stateProvider.state('main', {
       abstract: true,
@@ -44,26 +48,28 @@ angular
         },
         'nav@main': {
           templateUrl: "views/about.html",
-          controller:"mainviewCtrl"
+          // controller:"mainviewCtrl"
         },
         'footer@main': {
           templateUrl: "views/footer.html",
-        controller:"mainviewCtrl"
+        // controller:"mainviewCtrl"
 
         },
         'mobileMenu@main':{
           templateUrl: "views/mobilemenu.html",
-        controller:"mainviewCtrl"
+        // controller:"mainviewCtrl"
 
         },
       }
     }).state('main.home', {
       url: '/home',
       templateUrl: "views/home.html"
-    }).state('main.about', {
-      url: '/about',
-      templateUrl: "views/about.html"
-    }).state('main.blog', {
+    })
+    // .state('main.about', {
+    //   url: '/about',
+    //   templateUrl: "views/about.html"
+    // })
+    .state('main.blog', {
       url: '/blog',
       views: {
         '': {

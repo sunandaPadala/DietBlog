@@ -41,18 +41,11 @@
     <!-- Recent Entry Widget Begins -->
     <div class="widget widget_recent_entries">
       <h2 class="widget-title">Recent Posts</h2>
-      <div class="recent-box">
-        <div class="recent-img"> <img src="images/150x150.png" alt="images"> </div>
+      <div class="recent-box" ng-repeat="post in recentPosts">
+        <div class="recent-img"> <img ng-src="{{post.images[0]}}" alt="images"> </div>
         <div class="about-info recent-info">
-          <h4> <a href="javascript:void(0)">Passage of Lorem Ipsum of passages Lorem Ipsum available.</a> </h4>
-          <h5>January 10, 2017</h5>
-        </div>
-      </div>
-      <div class="recent-box">
-        <div class="recent-img"> <img src="images/150x150.png" alt="images"> </div>
-        <div class="about-info recent-info">
-          <h4> <a href="javascript:void(0)">Passage of Lorem Ipsum of passages Lorem Ipsum available.</a> </h4>
-          <h5>January 10, 2017</h5>
+          <h4> <a href="javascript:void(0)">{{post.title}}</a> </h4>
+          <h5>{{post.createdAt|date:"MMMM dd, y"}}</h5>
         </div>
       </div>
     </div>
@@ -61,17 +54,17 @@
     <div class="widget widget_categories">
       <h2 class="widget-title">Categories</h2>
       <ul>
-        <li> <a href="javascript:void(0)">Category #1</a> </li>
-        <li> <a href="javascript:void(0)">Category #2</a> </li>
+        <li ng-repeat="category in categories"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
+       <!--  <li> <a href="javascript:void(0)">Category #2</a> </li>
         <li> <a href="javascript:void(0)">Category #3</a> </li>
-        <li> <a href="javascript:void(0)">Category #4</a> </li>
+        <li> <a href="javascript:void(0)">Category #4</a> </li> -->
       </ul>
     </div>
     <!-- Categories Widget Ends -->
     <!-- Ad Banner Widget Begins -->
-    <div class="widget widget_ad_banner">
+   <!--  <div class="widget widget_ad_banner">
       <a href="javascript:void(0)" target="_blank"> <img src="images/452x219.png" alt="images"> </a>
-    </div>
+    </div> -->
     <!-- Ad Banner Widget Ends -->
     <!-- Tag Cloud Widget Begins -->
     <div class="widget widget_tag_cloud">
