@@ -43,6 +43,7 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-socialshare/dist/angular-socialshare.min.js',
+      'bower_components/angularUtils-pagination/dirPagination.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
