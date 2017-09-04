@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance) {
+  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance, myService) {
     $scope.awesomeThings = [];
     $scope.currentPage = 1;
     $scope.itemsPerPage = 4;
@@ -11,7 +11,6 @@ angular.module('dietBlog')
         $scope.totalItems = response.totalCount;
         $scope.awesomeThings = response.tips;
         angularGridInstance.gallery.refresh();
-        $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top-50 }, 500);
       }, function(error) {
         console.log(error);
       });
@@ -19,10 +18,13 @@ angular.module('dietBlog')
     $scope.paginate($scope.itemsPerPage, 0);
     $scope.loadBlogDetails = function(pic) {
       console.log(pic);
+      myService.setter(pic);
       $state.go('main.blogDetails');
+      $("html, body").animate({ scrollTop:0 }, 0);
     };
     $scope.pageChangeHandler = function(nmbr) {
       $scope.currentPage = nmbr;
       $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
+        $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top-50 }, 500);
     };
   });

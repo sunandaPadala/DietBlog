@@ -73,4 +73,27 @@ app.service('blogService', ['$q', '$http', 'configSettings', function($q, $http,
     return deferred.promise;
   };
 
+  this.getSpecificData = function(id) {
+    var deferred = $q.defer();
+    var requrl = configSettings.baseUrl + 'articles/get/' + id + '/one';
+    $http.get(requrl)
+      .then(function(data) {
+        deferred.resolve(data.data);
+      }, function(msg, code) {
+        deferred.reject(msg);
+      });
+    return deferred.promise;
+  };
+
 }]);
+
+app.factory("myService", function() {
+    var theValue = {};
+    theValue.setter = function(newValue) {
+        theValue.value = newValue;
+    }
+    theValue.getter = function() {
+        return theValue.value;
+    }
+    return theValue;
+});
