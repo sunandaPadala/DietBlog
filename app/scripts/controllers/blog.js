@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance) {
+  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance, myService) {
     $scope.awesomeThings = [];
     $scope.currentPage = 1;
     $scope.itemsPerPage = 4;
@@ -18,6 +18,7 @@ angular.module('dietBlog')
     $scope.paginate($scope.itemsPerPage, 0);
     $scope.loadBlogDetails = function(pic) {
       console.log(pic);
+      myService.setter(pic);
       $state.go('main.blogDetails');
     }
     $scope.pageChangeHandler = function(nmbr) {

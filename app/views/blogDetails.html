@@ -4,9 +4,9 @@
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding">
         <!-- Blog Post Begins -->
         <article class="outer-blog-box pr">
-          <div class="blog-img blog-media"><img src="images/1920x1600.png" alt="images"></div>
+          <div class="blog-img blog-media"><img ng-src={{blogPostResponse.images[0]}} alt="images"></div>
           <div class="blog-captions">
-            <h2 class="blog-title"> <a href="javascript:void(0)">Only centuries Make Scrambled it to a type specimen!</a> </h2>
+            <h2 class="blog-title"> <a href="javascript:void(0)">{{blogPostResponse.title}}</a> </h2>
             <ul class="below-blog-list">
               <li>
                 <a href="javascript:void(0)"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
@@ -20,8 +20,8 @@
               <li>
                 <a href="javascript:void(0)"> <i class="fa fa-heart-o" aria-hidden="true"></i> Lifestyle </a>
               </li>
-            </ul>
-            <p>Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the majity have suffered alteration in some form by injected andomised rds which don't look even slightly believable If you are going.
+            </ul>{{blogPostResponse.description}}
+            <!-- <p>Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the majity have suffered alteration in some form by injected andomised rds which don't look even slightly believable If you are going.
               <br> to use a passage of Lorem Ipsum, you need to be sure there All the Lorem Ipsum generators on the Internet tend to repeat predefined</p>
             <p>chunks as necessary, making this the first true gener It uses a dictionary of over repeat predefined chunks as necessary generators on the Internet tend to repeat predefined chunks</p>
             <p>Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
@@ -42,7 +42,7 @@
             <blockquote>
               <p>Passages of Lorem Ipsum available, but the majority have suffered alteration in some form by injected humour, or randomised words which don't look even slightly believable If you are going to use a passage.</p>
               <h5> Mary Fernandez </h5>
-            </blockquote>
+            </blockquote> -->
           </div>
         </article>
         <!-- Blog Post Ends -->
