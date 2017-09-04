@@ -79,7 +79,7 @@ angular
           },
           'grid@main.blog': {
             templateUrl: "views/blogGrid.html",
-            controller: "MainCtrl"
+            // controller: "MainCtrl"
           },
           'right@main.blog': {
             templateUrl: "views/blogRight.html"

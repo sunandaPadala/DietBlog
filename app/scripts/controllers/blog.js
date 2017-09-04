@@ -11,6 +11,7 @@ angular.module('dietBlog')
         $scope.totalItems = response.totalCount;
         $scope.awesomeThings = response.tips;
         angularGridInstance.gallery.refresh();
+        $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top-50 }, 500);
       }, function(error) {
         console.log(error);
       });
