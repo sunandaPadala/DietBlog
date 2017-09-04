@@ -11,6 +11,7 @@ angular.module('dietBlog')
         $scope.totalItems = response.totalCount;
         $scope.awesomeThings = response.tips;
         angularGridInstance.gallery.refresh();
+        $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top-50 }, 500);
       }, function(error) {
         console.log(error);
       });
@@ -19,7 +20,7 @@ angular.module('dietBlog')
     $scope.loadBlogDetails = function(pic) {
       console.log(pic);
       $state.go('main.blogDetails');
-    }
+    };
     $scope.pageChangeHandler = function(nmbr) {
       $scope.currentPage = nmbr;
       $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));

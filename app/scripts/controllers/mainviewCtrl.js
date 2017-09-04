@@ -4,9 +4,17 @@ angular.module('dietBlog')
     console.log("main sfsd");
     $scope.mainviewData = mainviewData;
     $scope.recentPosts=[];
-    $scope.toggleMenu = function() {
-      $scope.mainviewData.menuOpen = !$scope.mainviewData.menuOpen;
-    };
+
+      mainViewService.coverblog().then(function(response){
+      $scope.coverblog=response.data.tips[0];
+      $scope.backgroundimg=
+        {
+          background:'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('+response.data.tips[0].images[0]+') fixed center center'
+};
+    },function(error){
+      console.log(error);
+    });
+   
     mainViewService.recentPosts().then(function(response){
     	$scope.recentPosts=response.data;
     },function(error){
@@ -17,18 +25,8 @@ angular.module('dietBlog')
     },function(error){
     	console.log(error);
     });
-     mainViewService.coverblog().then(function(response){
-    	$scope.coverblog=response.data.tips[0];
-    	$scope.backgroundimg=
-    		{
-    			background:'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('+response.data.tips[0].images[0]+') fixed center center'
-};
-    },function(error){
-    	console.log(error);
-    });
-    
     angular.element($window).bind("scroll", function() {
-      if (this.pageYOffset > 250) {
+      if (this.pageYOffset > 150) {
         if (!$scope.mainviewData.scrollview) {
           $scope.mainviewData.scrollview = true;
           if(this.innerWidth>767){
@@ -46,6 +44,9 @@ angular.module('dietBlog')
         }
       }
     });
+     $scope.toggleMenu = function() {
+      $scope.mainviewData.menuOpen = !$scope.mainviewData.menuOpen;
+    };
 
     $scope.scrolltoTop = function() {
       $('body,html').animate({

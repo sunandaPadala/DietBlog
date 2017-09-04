@@ -677,8 +677,8 @@ blockquote p span {
 
 .banner-static {
   height: 595px;
-  background-image: url('../images/1920x595.png');
-     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/1920x595.png) fixed center center;
+  /*background-image: url('../images/1920x595.png');*/
+     /*background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/1920x595.png) fixed center center;*/
   background-position: top left;
   background-size: cover;
   background-repeat: no-repeat;
