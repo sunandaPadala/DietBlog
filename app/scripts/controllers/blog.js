@@ -20,7 +20,8 @@ angular.module('dietBlog')
       console.log(pic);
       myService.setter(pic);
       $state.go('main.blogDetails');
-    }
+      $("html, body").animate({ scrollTop: $('#main-content').offset().top }, 0);
+    };
     $scope.pageChangeHandler = function(nmbr) {
       $scope.currentPage = nmbr;
       $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));

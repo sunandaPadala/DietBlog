@@ -9,7 +9,7 @@ angular.module('dietBlog')
     $scope.blogPostId = $scope.blogPageDetails.id;
 
     blogService.getSpecificData($scope.blogPostId).then(function(response) {
-      console.log(response)
+      console.log(response);
       $scope.blogPostResponse = response;
     }, function(error) {
       console.log(error);
