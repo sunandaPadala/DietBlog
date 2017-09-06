@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window','mainViewService', function($scope, mainviewData, $window, mainViewService) {
+  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window','mainViewService','ReusableCalls', function($scope, mainviewData, $window, mainViewService, rCall) {
     console.log("main sfsd");
     $scope.mainviewData = mainviewData;
     $scope.recentPosts=[];
@@ -66,8 +66,10 @@ angular.module('dietBlog')
     	if($scope.usersubscrip !== ""){
     		mainViewService.subscribe(email).then(function(response){
     			console.log(response);
+          rCall.alertMessage("",response.data.message);
     		},function(msg){
     			console.log(msg);
+          rCall.alertMessage("",msg);
     		});
     	}else{
     		alert("enter valid email");

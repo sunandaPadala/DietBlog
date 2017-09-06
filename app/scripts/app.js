@@ -95,4 +95,15 @@ angular
             }
        }
       });
-  });
+  }).directive("okPopUp", function() {
+  return {
+    restrict : "E",
+    templateUrl : "views/OkPopup.html",
+    transclude: true,
+    link : function($scope, element, attrs, pageCtrl) {  
+      $scope.closepopup = function(){
+        $("#okPopUp").css('display', 'none');
+      };
+    }
+  };
+});

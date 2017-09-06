@@ -97,3 +97,27 @@ app.factory("myService", function() {
     }
     return theValue;
 });
+
+app
+.factory("ReusableCalls", ["$timeout", "$state",
+    function($timeout, $state) {
+      var obj = {};
+      obj.alertMessage =function(ttl,msg){
+         $timeout(function() {
+           var scope = angular.element("#okPopUp").scope();
+           scope.title = ttl;
+           scope.message = msg;
+           $("#okPopUp").css('display', 'block');
+           scope.OkPopup = function(){
+             console.log("Ok Button");
+             $("#okPopUp").css('display', 'none');
+                       };
+           scope.cancel = function(){
+             $("#okPopUp").css('display', 'none');
+             console.log("OK popup closed clicked");
+           };
+      
+         });
+      };
+      return obj;
+}]);
