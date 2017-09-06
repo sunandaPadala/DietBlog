@@ -4,9 +4,9 @@
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding">
         <!-- Blog Post Begins -->
         <article class="outer-blog-box pr">
-          <div class="blog-img blog-media"><img ng-src={{blogPostResponse.images[0]}} alt="images"></div>
+          <div class="blog-img blog-media"><img ng-src={{details.images[0]}} alt="images"></div>
           <div class="blog-captions">
-            <h2 class="blog-title"> <a href="javascript:void(0)">{{blogPostResponse.title}}</a> </h2>
+            <h2 class="blog-title"> <a href="javascript:void(0)">{{details.title}}</a> </h2>
             <ul class="below-blog-list">
               <li>
                 <a href="javascript:void(0)"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
@@ -21,7 +21,7 @@
                 <a href="javascript:void(0)"> <i class="fa fa-heart-o" aria-hidden="true"></i> Lifestyle </a>
               </li>
             </ul>
-            <div ng-bind-html="blogPostResponse.description">
+            <div ng-bind-html="details.description">
               
             </div>
             <!-- <p>Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the majity have suffered alteration in some form by injected andomised rds which don't look even slightly believable If you are going.

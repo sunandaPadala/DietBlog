@@ -79,15 +79,20 @@ angular
           },
           'grid@main.blog': {
             templateUrl: "views/blogGrid.html",
-            // controller: "MainCtrl"
+            controller: "MainCtrl"
           },
           'right@main.blog': {
             templateUrl: "views/blogRight.html"
           }
         }
       }).state('main.blogDetails', {
-        url: '/blogDetails',
+        url: '/blogDetails:id',
         templateUrl: "views/blogDetails.html",
-        controller: "blogDetailsCtrl"
+        controller: "blogDetailsCtrl",
+         resolve: {
+              blogDetails : function(blogService,$stateParams) {
+                return blogService.getSpecificData($stateParams.id);
+            }
+       }
       });
   });
