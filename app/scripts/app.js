@@ -95,7 +95,7 @@ angular
             }
        }
       });
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     //$locationProvider.hashPrefix('');
 
   }).directive("okPopUp", function() {
