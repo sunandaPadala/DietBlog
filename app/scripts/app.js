@@ -27,7 +27,7 @@ angular
     'baseUrl': 'https://right-my-diet.herokuapp.com/',
     'someElseSetting': 'settingValue'
     //other setting will also be there.
-  }).config(function($stateProvider, $urlRouterProvider) {
+  }).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/blog');
     $stateProvider.state('main', {
         abstract: true,
@@ -86,7 +86,7 @@ angular
           }
         }
       }).state('main.blogDetails', {
-        url: '/blogDetails:id',
+        url: '/blogDetails/:id',
         templateUrl: "views/blogDetails.html",
         controller: "blogDetailsCtrl",
          resolve: {
@@ -95,6 +95,9 @@ angular
             }
        }
       });
+    //$locationProvider.html5Mode(true);
+    //$locationProvider.hashPrefix('');
+
   }).directive("okPopUp", function() {
   return {
     restrict : "E",
