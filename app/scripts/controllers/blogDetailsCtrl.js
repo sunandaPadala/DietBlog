@@ -1,7 +1,6 @@
 'use strict';
 angular.module('dietBlog')
   .controller('blogDetailsCtrl', function($scope, blogService, blogDetails, ReusableCalls, $uibModal) {
-
     //$scope.blogPageDetails = myService.getter();
     //console.log($scope.blogPageDetails);
     //$( ".blog-captions" ).html($scope.blogPageDetails.description);
@@ -10,7 +9,6 @@ angular.module('dietBlog')
 
     $scope.details = blogDetails;
     console.log($scope.details);
-
     $scope.comments = [{
       "id": 1,
       "comment": "Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the m injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the!",
