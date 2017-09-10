@@ -37,6 +37,19 @@ app.service('blogService', ['$q', '$http', 'configSettings', function($q, $http,
     return deferred.promise;
   };
 
+  this.postComments = function(id, commentDetails) {
+    var deferred = $q.defer();
+    var requrl = configSettings.baseUrl + 'articles/add/' + id + '/comment';
+    $http.post(requrl, commentDetails)
+      .then(function(resp) {
+        deferred.resolve(resp);
+      }, function(msg, code) {
+        deferred.reject(msg);
+      });
+
+    return deferred.promise;
+  };
+
 }]);
 
 app.factory("myService", function() {
@@ -61,12 +74,10 @@ app
           scope.message = msg;
           $("#okPopUp").css('display', 'block');
           scope.OkPopup = function() {
-            console.log("Ok Button");
             $("#okPopUp").css('display', 'none');
           };
           scope.cancel = function() {
             $("#okPopUp").css('display', 'none');
-            console.log("OK popup closed clicked");
           };
 
         });

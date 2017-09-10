@@ -10,17 +10,17 @@ angular.module('dietBlog')
     $scope.noResults = false;
     $scope.paginate = function(limit, skip) {
       blogService.getBlogs(limit, skip).then(function(response) {
-        console.log(response)
         $scope.totalItems = response.totalCount;
         $scope.awesomeThings = response.tips;
-        angularGridInstance.gallery.refresh();
+        if (angularGridInstance.gallery) {
+          angularGridInstance.gallery.refresh();
+        }
       }, function(error) {
         console.log(error);
       });
     };
     $scope.paginate($scope.itemsPerPage, 0);
     $scope.loadBlogDetails = function(pic) {
-      console.log(pic);
       //myService.setter(pic);
       $state.go('main.blogDetails', {id: pic.id});
       // $("html, body").animate({ scrollTop:0 }, 0);
@@ -33,15 +33,16 @@ angular.module('dietBlog')
 
     $scope.getIdForShare = function(getId) {
       $scope.shareUrl = configSettings.baseUrl + 'blogDetails/' + getId.id;
-      console.log($scope.shareUrl);
     };
     $scope.search = function() {
       var searchText = $scope.formData.searchString;
       blogService.articlesSearch(searchText).then(function(response) {
-        console.log(response)
         $scope.awesomeThings = response;
         $scope.totalItems = $scope.awesomeThings.length;
-        angularGridInstance.gallery.refresh();
+        if (angularGridInstance.gallery) {
+          angularGridInstance.gallery.refresh();
+        }
+
         if ($scope.awesomeThings.length <= 0) {
           $scope.noResults = true;
         } else {
@@ -55,8 +56,9 @@ angular.module('dietBlog')
       $scope.issearch = true;
     };
     $scope.cancel = function() {
+      $scope.formData.searchString = '';
       $scope.issearch = false;
-
+      $scope.noResults = false;
       $scope.paginate($scope.itemsPerPage, 0);
     };
 
