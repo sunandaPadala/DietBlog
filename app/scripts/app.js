@@ -71,7 +71,7 @@ angular
       //   templateUrl: "views/about.html"
       // })
       .state('main.blog', {
-        url: '/blog',
+        url: '/blog/:page',
         views: {
           '': {
             templateUrl: "views/blog.html",
@@ -84,6 +84,15 @@ angular
           'right@main.blog': {
             templateUrl: "views/blogRight.html"
           }
+        },
+        params:{
+          page:{
+            dynamic: true,
+            value: 0
+          }
+        },
+        resolve:{
+          
         }
       }).state('main.blogDetails', {
         url: '/blogDetails/:id',
@@ -95,8 +104,8 @@ angular
             }
        }
       });
-    //$locationProvider.html5Mode(true);
-    //$locationProvider.hashPrefix('');
+    // $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
 
   }).directive("okPopUp", function() {
   return {

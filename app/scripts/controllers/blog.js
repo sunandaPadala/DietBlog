@@ -20,7 +20,7 @@ angular.module('dietBlog')
       console.log(pic);
       //myService.setter(pic);
       $state.go('main.blogDetails', {id: pic.id});
-      $("html, body").animate({ scrollTop:0 }, 0);
+      // $("html, body").animate({ scrollTop:0 }, 0);
     };
     $scope.pageChangeHandler = function(nmbr) {
       $scope.currentPage = nmbr;
