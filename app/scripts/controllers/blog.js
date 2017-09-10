@@ -10,7 +10,6 @@ angular.module('dietBlog')
     $scope.noResults = false;
     $scope.paginate = function(limit, skip) {
       blogService.getBlogs(limit, skip).then(function(response) {
-        console.log(response)
         $scope.totalItems = response.totalCount;
         $scope.awesomeThings = response.tips;
         if (angularGridInstance.gallery) {
@@ -22,7 +21,6 @@ angular.module('dietBlog')
     };
     $scope.paginate($scope.itemsPerPage, 0);
     $scope.loadBlogDetails = function(pic) {
-      console.log(pic);
       //myService.setter(pic);
       $state.go('main.blogDetails', { id: pic.id });
       $("html, body").animate({ scrollTop: 0 }, 0);
@@ -35,12 +33,10 @@ angular.module('dietBlog')
 
     $scope.getIdForShare = function(getId) {
       $scope.shareUrl = configSettings.baseUrl + 'blogDetails/' + getId.id;
-      console.log($scope.shareUrl);
     };
     $scope.search = function() {
       var searchText = $scope.formData.searchString;
       blogService.articlesSearch(searchText).then(function(response) {
-        console.log(response)
         $scope.awesomeThings = response;
         $scope.totalItems = $scope.awesomeThings.length;
         if (angularGridInstance.gallery) {
