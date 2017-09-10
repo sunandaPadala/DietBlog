@@ -1,38 +1,41 @@
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-  <ul angular-grid="awesomeThings" ag-grid-width="300" ag-gutter-size="12" ag-id="gallery" ag-refresh-on-img-load="true">
-    <li dir-paginate="pic in awesomeThings | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="currentPage" total-items=totalItems>
-      <img ng-src="{{pic.images[0]}}" class="grid-img img-responsive" style="margin-bottom:20px;" />
-      <h2><a style="color:black;">{{pic.title}}</a></h2>
-      <ul class="below-blog-list">
-        <li>
-          <a href="javascript:void(0)"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)"> <i class="fa fa-calendar-o" aria-hidden="true"></i> January 10, 2017 </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)"> <i class="fa fa-comment-o" aria-hidden="true"></i> 3 Comment </a>
-        </li>
-      </ul>
-      <p ng-bind-html="pic.description" style="height:110px;overflow:hidden;"></p>
-      <div class="bottom-blog">
-        <a ng-click="loadBlogDetails(pic)" class="continue-read"> Continue Reading <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
-        <ul class="social">
+  <div ng-if="noResults">No results were found for the search string "<b>{{formData.searchString}}</b>"</div>
+  <div ng-if="!noResults">
+    <ul angular-grid="awesomeThings" ag-grid-width="300" ag-gutter-size="12" ag-id="gallery" ag-refresh-on-img-load="true">
+      <li dir-paginate="pic in awesomeThings | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="currentPage" total-items=totalItems>
+        <img ng-src="{{pic.images[0]}}" class="grid-img img-responsive" style="margin-bottom:20px;" />
+        <h2><a style="color:black;">{{pic.title}}</a></h2>
+        <ul class="below-blog-list">
           <li>
-            <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="facebook" socialshare-url={{shareUrl}}> <i class="fa fa-facebook"></i> </a>
+            <a href="javascript:void(0)"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
           </li>
           <li>
-            <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="twitter" socialshare-url={{shareUrl}}> <i class="fa fa-twitter"></i> </a>
+            <a href="javascript:void(0)"> <i class="fa fa-calendar-o" aria-hidden="true"></i> January 10, 2017 </a>
           </li>
           <li>
-            <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="google" socialshare-url={{shareUrl}}> <i class="fa fa-google-plus"></i> </a>
-          </li>
-          <li>
-            <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="linkedin" socialshare-url={{shareUrl}}> <i class="fa fa-linkedin"></i> </a>
+            <a href="javascript:void(0)"> <i class="fa fa-comment-o" aria-hidden="true"></i> 3 Comment </a>
           </li>
         </ul>
-      </div>
-    </li>
-  </ul>
-  <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+        <p ng-bind-html="pic.description" style="height:110px;overflow:hidden;"></p>
+        <div class="bottom-blog">
+          <a ng-click="loadBlogDetails(pic)" class="continue-read"> Continue Reading <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+          <ul class="social">
+            <li>
+              <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="facebook" socialshare-url={{shareUrl}}> <i class="fa fa-facebook"></i> </a>
+            </li>
+            <li>
+              <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="twitter" socialshare-url={{shareUrl}}> <i class="fa fa-twitter"></i> </a>
+            </li>
+            <li>
+              <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="google" socialshare-url={{shareUrl}}> <i class="fa fa-google-plus"></i> </a>
+            </li>
+            <li>
+              <a ng-click="getIdForShare(pic)" socialshare socialshare-provider="linkedin" socialshare-url={{shareUrl}}> <i class="fa fa-linkedin"></i> </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+  </div>
 </div>

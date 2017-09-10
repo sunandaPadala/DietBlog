@@ -78,8 +78,7 @@ angular
             controller: 'MainCtrl'
           },
           'grid@main.blog': {
-            templateUrl: "views/blogGrid.html",
-            controller: "MainCtrl"
+            templateUrl: "views/blogGrid.html"
           },
           'right@main.blog': {
             templateUrl: "views/blogRight.html"
@@ -98,24 +97,24 @@ angular
         url: '/blogDetails/:id',
         templateUrl: "views/blogDetails.html",
         controller: "blogDetailsCtrl",
-         resolve: {
-              blogDetails : function(blogService,$stateParams) {
-                return blogService.getSpecificData($stateParams.id);
-            }
-       }
+        resolve: {
+          blogDetails: function(blogService, $stateParams) {
+            return blogService.getSpecificData($stateParams.id);
+          }
+        }
       });
     // $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('');
 
   }).directive("okPopUp", function() {
-  return {
-    restrict : "E",
-    templateUrl : "views/OkPopup.html",
-    transclude: true,
-    link : function($scope, element, attrs, pageCtrl) {  
-      $scope.closepopup = function(){
-        $("#okPopUp").css('display', 'none');
-      };
-    }
-  };
-});
+    return {
+      restrict: "E",
+      templateUrl: "views/OkPopup.html",
+      transclude: true,
+      link: function($scope, element, attrs, pageCtrl) {
+        $scope.closepopup = function() {
+          $("#okPopUp").css('display', 'none');
+        };
+      }
+    };
+  });
