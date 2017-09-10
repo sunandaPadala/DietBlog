@@ -4,8 +4,9 @@
     <div class="widget widget_search">
       <h2 class="widget-title">Search</h2>
       <form>
-        <input type="text">
-        <button type="button" class="search-submit"><i class="fa fa-search"></i></button>
+        <input type="text" ng-model="formData.searchString" ng-keydown="$event.keyCode === 13 && search()"> {{formData.searchString}}
+        <button type="button" class="search-submit" ng-if="!issearch" ng-click="search()"><i class="fa fa-search"></i></button>
+        <button type="button" class="search-submit" ng-if="issearch" ng-click="cancel()"><i class="fa fa-times-circle-o"></i></button>
       </form>
     </div>
     <!-- Search Form Widget Ends -->
@@ -55,14 +56,14 @@
       <h2 class="widget-title">Categories</h2>
       <ul>
         <li ng-repeat="category in categories"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
-       <!--  <li> <a href="javascript:void(0)">Category #2</a> </li>
+        <!--  <li> <a href="javascript:void(0)">Category #2</a> </li>
         <li> <a href="javascript:void(0)">Category #3</a> </li>
         <li> <a href="javascript:void(0)">Category #4</a> </li> -->
       </ul>
     </div>
     <!-- Categories Widget Ends -->
     <!-- Ad Banner Widget Begins -->
-   <!--  <div class="widget widget_ad_banner">
+    <!--  <div class="widget widget_ad_banner">
       <a href="javascript:void(0)" target="_blank"> <img src="images/452x219.png" alt="images"> </a>
     </div> -->
     <!-- Ad Banner Widget Ends -->
