@@ -1,6 +1,6 @@
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
   <div ng-if="noResults">No results were found for the search string "<b>{{formData.searchString}}</b>"</div>
-  <div ng-if="!noResults">
+  <div>
     <ul angular-grid="awesomeThings" ag-grid-width="300" ag-gutter-size="12" ag-id="gallery" ag-refresh-on-img-load="true">
       <li dir-paginate="pic in awesomeThings | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="currentPage" total-items=totalItems>
         <img ng-src="{{pic.images[0]}}" class="grid-img img-responsive" style="margin-bottom:20px;" />

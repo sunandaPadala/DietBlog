@@ -13,7 +13,9 @@ angular.module('dietBlog')
         console.log(response)
         $scope.totalItems = response.totalCount;
         $scope.awesomeThings = response.tips;
-        angularGridInstance.gallery.refresh();
+        if (angularGridInstance.gallery) {
+          angularGridInstance.gallery.refresh();
+        }
       }, function(error) {
         console.log(error);
       });
@@ -41,7 +43,10 @@ angular.module('dietBlog')
         console.log(response)
         $scope.awesomeThings = response;
         $scope.totalItems = $scope.awesomeThings.length;
-        angularGridInstance.gallery.refresh();
+        if (angularGridInstance.gallery) {
+          angularGridInstance.gallery.refresh();
+        }
+
         if ($scope.awesomeThings.length <= 0) {
           $scope.noResults = true;
         } else {
@@ -55,8 +60,9 @@ angular.module('dietBlog')
       $scope.issearch = true;
     };
     $scope.cancel = function() {
+      $scope.formData.searchString = '';
       $scope.issearch = false;
-
+      $scope.noResults = false;
       $scope.paginate($scope.itemsPerPage, 0);
     };
 
