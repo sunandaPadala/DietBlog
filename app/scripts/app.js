@@ -87,11 +87,14 @@ angular
         params:{
           page:{
             dynamic: true,
-            value: 0
-          }
+            value: "1"
+          },
+          itemsPerPage:"4"
         },
         resolve:{
-          
+          gridData:function(blogService,$stateParams){
+
+          }
         }
       }).state('main.blogDetails', {
         url: '/blogDetails/:id',
