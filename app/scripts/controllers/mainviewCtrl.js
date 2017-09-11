@@ -1,6 +1,7 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', 'ReusableCalls', function($scope, mainviewData, $window, mainViewService, rCall) {
+  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window','mainViewService','ReusableCalls','$uibModal', function($scope, mainviewData, $window, mainViewService, rCall, $uibModal) {
+    console.log("main sfsd");
     $scope.mainviewData = mainviewData;
     $scope.recentPosts = [];
 
@@ -60,17 +61,47 @@ angular.module('dietBlog')
       }
     };
 
-    $scope.usersubscribe = function(email) {
-      if ($scope.usersubscrip !== "") {
-        mainViewService.subscribe(email).then(function(response) {
-          rCall.alertMessage("", response.data.message);
-        }, function(msg) {
-          console.log(msg);
-          rCall.alertMessage("", msg);
-        });
-      } else {
-        alert("enter valid email");
-      }
+    $scope.usersubscribe=function(email){
+    	if($scope.usersubscrip !== ""){
+    		mainViewService.subscribe(email).then(function(response){
+    			console.log(response);
+          //$scope.usersubscrip = "";
+          //rCall.alertMessage("",response.data.message);
+            var modalInstance = $uibModal.open({
+            //animation: $ctrl.animationsEnabled,
+            //ariaLabelledBy: 'modal-title-top',
+            //ariaDescribedBy: 'modal-body-top',
+            templateUrl: '../views/successModel.html',
+            size: 'md',
+            controller: function($scope) {
+              $scope.message = response.data.message;
+              $scope.title = "Right my diet";
+              $scope.ok = function() {
+                modalInstance.close();
+              };
+            }
+          });
+    		},function(msg){
+    			console.log(msg);
+          //rCall.alertMessage("",msg);
+            var modalInstance = $uibModal.open({
+            //animation: $ctrl.animationsEnabled,
+            //ariaLabelledBy: 'modal-title-top',
+            //ariaDescribedBy: 'modal-body-top',
+            templateUrl: '../views/successModel.html',
+            size: 'md',
+            controller: function($scope) {
+              $scope.message = msg;
+              $scope.title = "Right my diet";
+              $scope.ok = function() {
+                modalInstance.close();
+              };
+            }
+          });
+    		});
+    	}else{
+    		alert("enter valid email");
+    	}
     };
 
   }]);
