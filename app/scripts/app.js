@@ -28,7 +28,7 @@ angular
     'someElseSetting': 'settingValue'
     //other setting will also be there.
   }).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/blog');
+    $urlRouterProvider.otherwise('/blog/1');
     $stateProvider.state('main', {
         abstract: true,
         url: "",
@@ -71,7 +71,7 @@ angular
       //   templateUrl: "views/about.html"
       // })
       .state('main.blog', {
-        url: '/blog',
+        url: '/blog/:page',
         views: {
           '': {
             templateUrl: "views/blog.html",
@@ -83,19 +83,73 @@ angular
           'right@main.blog': {
             templateUrl: "views/blogRight.html"
           }
+        },
+        params:{
+          page:{
+            dynamic: true,
+            value: 1,
+            type:"int"
+          },
+          itemsPerPage:4
+        },
+        resolve:{
+          gridData:['blogService','$stateParams','$q',function(blogService,$stateParams,$q){
+              var deferred = $q.defer();
+          blogService.getBlogs($stateParams.itemsPerPage,($stateParams.itemsPerPage * ($stateParams.page - 1)))
+            .then(function(response){
+              var reqObj={};
+              if(response.tips.length){
+                // reqObj=response;
+                response['currentPage']=$stateParams.page;
+                 deferred.resolve(response);
+              }else{
+                blogService.getBlogs($stateParams.itemsPerPage,($stateParams.itemsPerPage * (1 - 1))).then(function(response){
+                  response['currentPage']=1;
+                  deferred.resolve(response);
+                },function(error){
+               deferred.reject(error);
+                });
+              }
+            },function(error){
+              console.log("failed to resolve state");
+              deferred.reject(error);
+            });
+            return deferred.promise;
+          }],
+
         }
+        // ,
+        // resolvePolicy: { async: 'WAIT',when:'EAGER' },
+        // redirectTo:function(trans){
+        // //   console.log("in redirec");
+        //   var resolvePromise = trans.injector().getAsync('gridData');
+        //   // if(trans.params().page !== )
+
+        //    return resolvePromise.then(function(response){
+        //       console.log(response);
+        //       if(trans.params().page !== response.currentPage){
+        //         return { state: 'main.blog', params: { page: response.currentPage,itemsPerPage:4 } };
+        //       }
+        //       // if(!response.tips.length){
+        //        // return { state: 'main.blog', params: { page: 1,itemsPerPage:4 } };
+        //       // }
+        //   },function(error){
+        //     console.log(error);
+        //   });
+        // }
+        
       }).state('main.blogDetails', {
         url: '/blogDetails/:id',
         templateUrl: "views/blogDetails.html",
         controller: "blogDetailsCtrl",
         resolve: {
-          blogDetails: function(blogService, $stateParams) {
+          blogDetails:['blogService','$stateParams', function(blogService, $stateParams) {
             return blogService.getSpecificData($stateParams.id);
-          }
+          }]
         }
       });
-    //$locationProvider.html5Mode(true);
-    //$locationProvider.hashPrefix('');
+    // $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
 
   }).directive("okPopUp", function() {
     return {

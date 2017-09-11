@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance, myService, configSettings) {
+  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance, myService, configSettings,gridData) {
     $scope.awesomeThings = [];
     $scope.currentPage = 1;
     $scope.itemsPerPage = 4;
@@ -8,6 +8,18 @@ angular.module('dietBlog')
     $scope.issearch = false;
     $scope.formData = {};
     $scope.noResults = false;
+    if(gridData){
+      console.log(gridData);
+      $scope.currentPage=gridData.currentPage;
+      $scope.totalItems = gridData.totalCount;
+        $scope.awesomeThings = gridData.tips;
+        if (angularGridInstance.gallery) {
+          angularGridInstance.gallery.refresh();
+        }
+        if($state.params.page!==gridData.currentPage){
+           $state.go('main.blog',{page:gridData.currentPage});
+        }
+    }
     $scope.paginate = function(limit, skip) {
       blogService.getBlogs(limit, skip).then(function(response) {
         angular.element('.loadingIndicator').hide();
@@ -21,16 +33,17 @@ angular.module('dietBlog')
         angular.element('.loadingIndicator').hide();
       });
     };
-    $scope.paginate($scope.itemsPerPage, 0);
+    // $scope.paginate($scope.itemsPerPage, 0);
     $scope.loadBlogDetails = function(pic) {
       angular.element('.loadingIndicator').show();
       //myService.setter(pic);
-      $state.go('main.blogDetails', { id: pic.id });
-      $("html, body").animate({ scrollTop: 0 }, 0);
+      $state.go('main.blogDetails', {id: pic.id});
+      // $("html, body").animate({ scrollTop:0 }, 0);
     };
     $scope.pageChangeHandler = function(nmbr) {
       angular.element('.loadingIndicator').show();
       $scope.currentPage = nmbr;
+      $state.go('main.blog',{page:nmbr});
       $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
       $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top - 50 }, 500);
     };
