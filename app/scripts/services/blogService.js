@@ -20,8 +20,10 @@ app.service('blogService', ['$q', '$http', 'configSettings', function($q, $http,
     $http.get(requrl)
       .then(function(data) {
         deferred.resolve(data.data);
+        angular.element('.loadingIndicator').hide();
       }, function(msg, code) {
         deferred.reject(msg);
+        angular.element('.loadingIndicator').hide();
       });
     return deferred.promise;
   };
