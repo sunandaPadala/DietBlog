@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance, myService, configSettings) {
+  .controller('MainCtrl', function($scope, $state, blogService, angularGridInstance, myService, configSettings,gridData) {
     $scope.awesomeThings = [];
     $scope.currentPage = 1;
     $scope.itemsPerPage = 4;
@@ -8,6 +8,18 @@ angular.module('dietBlog')
     $scope.issearch = false;
     $scope.formData = {};
     $scope.noResults = false;
+    if(gridData){
+      console.log(gridData);
+      $scope.currentPage=gridData.currentPage;
+      $scope.totalItems = gridData.totalCount;
+        $scope.awesomeThings = gridData.tips;
+        if (angularGridInstance.gallery) {
+          angularGridInstance.gallery.refresh();
+        }
+        if($state.params.page!==gridData.currentPage){
+           $state.go('main.blog',{page:gridData.currentPage});
+        }
+    }
     $scope.paginate = function(limit, skip) {
       blogService.getBlogs(limit, skip).then(function(response) {
         $scope.totalItems = response.totalCount;
@@ -19,7 +31,7 @@ angular.module('dietBlog')
         console.log(error);
       });
     };
-    $scope.paginate($scope.itemsPerPage, 0);
+    // $scope.paginate($scope.itemsPerPage, 0);
     $scope.loadBlogDetails = function(pic) {
       //myService.setter(pic);
       $state.go('main.blogDetails', {id: pic.id});
@@ -27,6 +39,7 @@ angular.module('dietBlog')
     };
     $scope.pageChangeHandler = function(nmbr) {
       $scope.currentPage = nmbr;
+      $state.go('main.blog',{page:nmbr});
       $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
       $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top - 50 }, 500);
     };
