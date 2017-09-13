@@ -43,9 +43,9 @@ angular.module('dietBlog')
           "name": $scope.commenterName
         }
       });
-      angular.element('.loadingIndicator').show();
+      // angular.element('.loadingIndicator').show();
       blogService.postComments(id, commentDetails).then(function(response) {
-        angular.element('.loadingIndicator').hide();
+        // angular.element('.loadingIndicator').hide();
         console.log(response);
         if (response.data.message == "SUCCESS") {
           $scope.commentText = '';
@@ -70,7 +70,7 @@ angular.module('dietBlog')
           });
         }
       }, function(error) {
-        angular.element('.loadingIndicator').hide();
+        // angular.element('.loadingIndicator').hide();
         console.log(error);
         //ReusableCalls.alertMessage("",error.error);
         var modalInstance = $uibModal.open({
