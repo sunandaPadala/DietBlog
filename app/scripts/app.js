@@ -84,36 +84,36 @@ angular
             templateUrl: "views/blogRight.html"
           }
         },
-        params:{
-          page:{
+        params: {
+          page: {
             dynamic: true,
             value: 1,
-            type:"int"
+            type: "int"
           },
-          itemsPerPage:4
+          itemsPerPage: 4
         },
-        resolve:{
-          gridData:['blogService','$stateParams','$q',function(blogService,$stateParams,$q){
-              var deferred = $q.defer();
-          blogService.getBlogs($stateParams.itemsPerPage,($stateParams.itemsPerPage * ($stateParams.page - 1)))
-            .then(function(response){
-              var reqObj={};
-              if(response.tips.length){
-                // reqObj=response;
-                response['currentPage']=$stateParams.page;
-                 deferred.resolve(response);
-              }else{
-                blogService.getBlogs($stateParams.itemsPerPage,($stateParams.itemsPerPage * (1 - 1))).then(function(response){
-                  response['currentPage']=1;
+        resolve: {
+          gridData: ['blogService', '$stateParams', '$q', function(blogService, $stateParams, $q) {
+            var deferred = $q.defer();
+            blogService.getBlogs($stateParams.itemsPerPage, ($stateParams.itemsPerPage * ($stateParams.page - 1)))
+              .then(function(response) {
+                var reqObj = {};
+                if (response.tips.length) {
+                  // reqObj=response;
+                  response['currentPage'] = $stateParams.page;
                   deferred.resolve(response);
-                },function(error){
-               deferred.reject(error);
-                });
-              }
-            },function(error){
-              console.log("failed to resolve state");
-              deferred.reject(error);
-            });
+                } else {
+                  blogService.getBlogs($stateParams.itemsPerPage, ($stateParams.itemsPerPage * (1 - 1))).then(function(response) {
+                    response['currentPage'] = 1;
+                    deferred.resolve(response);
+                  }, function(error) {
+                    deferred.reject(error);
+                  });
+                }
+              }, function(error) {
+                console.log("failed to resolve state");
+                deferred.reject(error);
+              });
             return deferred.promise;
           }],
 
@@ -137,14 +137,23 @@ angular
         //     console.log(error);
         //   });
         // }
-        
+
       }).state('main.blogDetails', {
         url: '/blogDetails/:id',
         templateUrl: "views/blogDetails.html",
         controller: "blogDetailsCtrl",
         resolve: {
-          blogDetails:['blogService','$stateParams', function(blogService, $stateParams) {
+          blogDetails: ['blogService', '$stateParams', function(blogService, $stateParams) {
             return blogService.getSpecificData($stateParams.id);
+          }]
+        }
+      }).state('main.categories', {
+        url: '/categories/:id',
+        templateUrl: "views/categories.html",
+        controller: "categoriesCtrl",
+        resolve: {
+          categoryArticles: ['mainViewService', '$stateParams', function(mainViewService, $stateParams) {
+            return mainViewService.getArticlesByCategory($stateParams.id);
           }]
         }
       });
