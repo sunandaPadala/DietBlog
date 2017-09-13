@@ -30,7 +30,6 @@
   <div class="loadingIndicator" ng-if="loading"></div>
   <div ui-view>
   </div>
-
   <ok-pop-up></ok-pop-up>
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
   <script>
@@ -76,11 +75,12 @@
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
   <script src="scripts/services/blogService.js"></script>
+  <script src="scripts/services/categoryService.js"></script>
   <script src="scripts/services/mainViewService.js"></script>
+  <script src="scripts/controllers/categoriesCtrl.js"></script>
   <script src="scripts/controllers/blog.js"></script>
   <script src="scripts/controllers/blogDetailsCtrl.js"></script>
   <script src="scripts/controllers/mainviewCtrl.js"></script>
-
   <!-- endbuild -->
 </body>
 

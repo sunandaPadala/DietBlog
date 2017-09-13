@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window','mainViewService','ReusableCalls','$uibModal', function($scope, mainviewData, $window, mainViewService, rCall, $uibModal) {
+  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', 'ReusableCalls', '$uibModal', '$state', function($scope, mainviewData, $window, mainViewService, rCall, $uibModal, $state) {
     console.log("main sfsd");
     $scope.mainviewData = mainviewData;
     $scope.recentPosts = [];
@@ -61,15 +61,16 @@ angular.module('dietBlog')
       }
     };
 
-    $scope.usersubscribe=function(email){
-    	if($scope.usersubscrip !== ""){
-        // angular.element('.loadingIndicator').show();
-    		mainViewService.subscribe(email).then(function(response){
-          // angular.element('.loadingIndicator').hide();
-    			console.log(response);
+
+    $scope.usersubscribe = function(email) {
+      if ($scope.usersubscrip !== "") {
+        angular.element('.loadingIndicator').show();
+        mainViewService.subscribe(email).then(function(response) {
+          angular.element('.loadingIndicator').hide();
+
           //$scope.usersubscrip = "";
           //rCall.alertMessage("",response.data.message);
-            var modalInstance = $uibModal.open({
+          var modalInstance = $uibModal.open({
             //animation: $ctrl.animationsEnabled,
             //ariaLabelledBy: 'modal-title-top',
             //ariaDescribedBy: 'modal-body-top',
@@ -83,11 +84,13 @@ angular.module('dietBlog')
               };
             }
           });
-    		},function(msg){
+
+        }, function(msg) {
           // angular.element('.loadingIndicator').hide();
-    			console.log(msg);
+          console.log(msg);
+
           //rCall.alertMessage("",msg);
-            var modalInstance = $uibModal.open({
+          var modalInstance = $uibModal.open({
             //animation: $ctrl.animationsEnabled,
             //ariaLabelledBy: 'modal-title-top',
             //ariaDescribedBy: 'modal-body-top',
@@ -101,10 +104,14 @@ angular.module('dietBlog')
               };
             }
           });
-    		});
-    	}else{
-    		alert("enter valid email");
-    	}
+        });
+      } else {
+        alert("enter valid email");
+      }
+    };
+    $scope.goToCategories = function(categoryId) {
+      $state.go('main.categories', { id: categoryId });
+
     };
 
   }]);
