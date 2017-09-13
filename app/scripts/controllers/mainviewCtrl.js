@@ -61,12 +61,13 @@ angular.module('dietBlog')
       }
     };
 
+
     $scope.usersubscribe = function(email) {
       if ($scope.usersubscrip !== "") {
         angular.element('.loadingIndicator').show();
         mainViewService.subscribe(email).then(function(response) {
           angular.element('.loadingIndicator').hide();
-          console.log(response);
+
           //$scope.usersubscrip = "";
           //rCall.alertMessage("",response.data.message);
           var modalInstance = $uibModal.open({
@@ -83,9 +84,11 @@ angular.module('dietBlog')
               };
             }
           });
+
         }, function(msg) {
-          angular.element('.loadingIndicator').hide();
+          // angular.element('.loadingIndicator').hide();
           console.log(msg);
+
           //rCall.alertMessage("",msg);
           var modalInstance = $uibModal.open({
             //animation: $ctrl.animationsEnabled,

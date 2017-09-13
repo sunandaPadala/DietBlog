@@ -22,7 +22,7 @@ angular.module('dietBlog')
     }
     $scope.paginate = function(limit, skip) {
       blogService.getBlogs(limit, skip).then(function(response) {
-        angular.element('.loadingIndicator').hide();
+        // angular.element('.loadingIndicator').hide();
         $scope.totalItems = response.totalCount;
         $scope.awesomeThings = response.tips;
         if (angularGridInstance.gallery) {
@@ -30,18 +30,18 @@ angular.module('dietBlog')
         }
       }, function(error) {
         console.log(error);
-        angular.element('.loadingIndicator').hide();
+        // angular.element('.loadingIndicator').hide();
       });
     };
     // $scope.paginate($scope.itemsPerPage, 0);
     $scope.loadBlogDetails = function(pic) {
-      angular.element('.loadingIndicator').show();
+      // angular.element('.loadingIndicator').show();
       //myService.setter(pic);
       $state.go('main.blogDetails', {id: pic.id});
       // $("html, body").animate({ scrollTop:0 }, 0);
     };
     $scope.pageChangeHandler = function(nmbr) {
-      angular.element('.loadingIndicator').show();
+      // angular.element('.loadingIndicator').show();
       $scope.currentPage = nmbr;
       $state.go('main.blog',{page:nmbr});
       $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));

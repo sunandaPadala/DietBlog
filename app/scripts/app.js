@@ -27,7 +27,8 @@ angular
     'baseUrl': 'https://right-my-diet.herokuapp.com/',
     'someElseSetting': 'settingValue'
     //other setting will also be there.
-  }).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  }).config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $httpProvider.interceptors.push('LoadingInterceptor');
     $urlRouterProvider.otherwise('/blog/1');
     $stateProvider.state('main', {
         abstract: true,
@@ -152,8 +153,8 @@ angular
         templateUrl: "views/categories.html",
         controller: "categoriesCtrl",
         resolve: {
-          categoryArticles: ['mainViewService', '$stateParams', function(mainViewService, $stateParams) {
-            return mainViewService.getArticlesByCategory($stateParams.id);
+          categoryArticles: ['categoryService', '$stateParams', function(categoryService, $stateParams) {
+            return categoryService.getArticlesByCategory($stateParams.id);
           }]
         }
       });
@@ -172,3 +173,49 @@ angular
       }
     };
   });
+angular.module('dietBlog').service('LoadingInterceptor', ['$q', '$rootScope', '$log',
+  function($q, $rootScope, $log) {
+    'use strict';
+
+    // var xhrCreations = 0;
+    // var xhrResolutions = 0;
+    $rootScope.loading = 0;
+
+    // function isLoading() {
+    //     return xhrResolutions < xhrCreations;
+    // }
+
+    // function updateStatus() {
+    //     $rootScope.loading = isLoading();
+    // }
+
+    return {
+      request: function(config) {
+        // xhrCreations++;
+        // updateStatus();
+        $rootScope.loading++;
+        return config;
+      },
+      requestError: function(rejection) {
+        // xhrResolutions++;
+        // updateStatus();
+        $rootScope.loading--;
+        $log.error('Request error:', rejection);
+        return $q.reject(rejection);
+      },
+      response: function(response) {
+        // xhrResolutions++;
+        // updateStatus();
+        $rootScope.loading--;
+        return response;
+      },
+      responseError: function(rejection) {
+        // xhrResolutions++;
+        // updateStatus();
+        $rootScope.loading--;
+        $log.error('Response error:', rejection);
+        return $q.reject(rejection);
+      }
+    };
+  }
+]);
