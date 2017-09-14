@@ -49,7 +49,7 @@ angular
 
           },
           'nav@main': {
-            templateUrl: "views/about.html",
+            templateUrl: "views/nav.html",
             // controller:"mainviewCtrl"
           },
           'footer@main': {
