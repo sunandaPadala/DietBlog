@@ -67,10 +67,10 @@ angular
         url: '/home',
         templateUrl: "views/home.html"
       })
-      // .state('main.about', {
-      //   url: '/about',
-      //   templateUrl: "views/about.html"
-      // })
+      .state('main.about', {
+        url: '/about',
+        templateUrl: "views/about.html"
+      })
       .state('main.blog', {
         url: '/blog/:page',
         views: {
