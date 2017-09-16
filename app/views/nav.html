@@ -21,51 +21,23 @@
           <div class="home-menu">
             <div class="collapse navbar-collapse" id="main-menu">
               <ul class="nav navbar-nav navbar-right">
-                <li><a ui-sref="main.home">Home</a></li>
-                <li><a ui-sref="main.about">About</a></li>
-                <li class="has-children"><a href="javascript:void(0)">CATEGORIES</a>
+                <li><a ui-sref="main.home" ng-class="{menuActive: $location.path() == '/home'}">Home</a></li>
+                <li><a ui-sref="main.about" ng-class="{menuActive: $location.path() == '/about'}">About</a></li>
+                <li class="has-children"><a href="javascript:void(0)" ng-class="{menuActive: $location.path().includes('/categories')}">CATEGORIES</a>
                   <ul class="sub-menu">
-                    <li ng-repeat="category in categories" ng-click="goToCategories(category.id)"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
-                    <!--   <li> <a href="#">Category #2</a> </li>
-                          <li> <a href="#">Category #3</a> </li>
-                          <li> <a href="#">Category #4</a> </li>
-                          <li> <a href="#">Category #5</a> </li> -->
+                    <li ng-repeat="category in categories" ng-click="goToCategories(category.id)">
+                      <a href=" javascript:void(0) ">{{category.name||'no name'}}</a> </li>
                   </ul>
                 </li>
-                <!--   <li class="has-children"><a href="javascript:void(0)">Health &amp; You</a>
-                        <ul class="sub-menu">
-                          <li class="has-children"> <a href="javascript:void(0)">For the Veggies</a>
-                            <ul class="sub-menu">
-                              <li> <a href="#">Example 1</a> </li>
-                              <li> <a href="#">Example 2</a> </li>
-                            </ul>
-                          </li>
-                          <li class="has-children"> <a href="javascript:void(0)">For the Non-Veggies</a>
-                            <ul class="sub-menu">
-                              <li> <a href="#">Example 1</a> </li>
-                              <li> <a href="#">Example 2</a> </li>
-                              <li> <a href="#">Example 3</a> </li>
-                              <li> <a href="#">Example 4</a> </li>
-                            </ul>
-                          </li>
-                          <li class="has-children"> <a href="javascript:void(0)">Fruit Lovers</a>
-                            <ul class="sub-menu">
-                              <li> <a href="#">Example 1</a> </li>
-                              <li> <a href="#">Example 2</a> </li>
-                              <li> <a href="#">Example 3</a> </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li> -->
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="# ">Contact Us</a></li>
               </ul>
             </div>
             <!-- Search Form Begins -->
-            <!--  <div class="search-form">
+            <!--  <div class="search-form ">
                       <form>
-                        <div class="form-group">
-                          <div class="btn-form"></div>
-                          <input type="text" class="form-control" placeholder="Search">
+                        <div class="form-group ">
+                          <div class="btn-form "></div>
+                          <input type="text " class="form-control " placeholder="Search ">
                         </div>
                       </form>
                     </div> -->

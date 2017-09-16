@@ -1,7 +1,6 @@
 'use strict';
 angular.module('dietBlog')
   .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', 'ReusableCalls', '$uibModal', '$state', function($scope, mainviewData, $window, mainViewService, rCall, $uibModal, $state) {
-    console.log("main sfsd");
     $scope.mainviewData = mainviewData;
     $scope.recentPosts = [];
 
