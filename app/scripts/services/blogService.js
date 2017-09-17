@@ -27,7 +27,7 @@ app.service('blogService', ['$q', '$http', 'configSettings', function($q, $http,
   };
   this.articlesSearch = function(searchString) {
     var deferred = $q.defer();
-    var requrl = configSettings.baseUrl + 'articles/' + searchString + '/searcharticles?skip=0&limit=5';
+    var requrl = configSettings.baseUrl + 'articles/' + searchString + '/searcharticles?skip=0&limit=4';
     $http.get(requrl)
       .then(function(data) {
         deferred.resolve(data.data);
