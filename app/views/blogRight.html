@@ -14,7 +14,7 @@
     <div class="widget widget_about">
       <h2 class="widget-title">About Me</h2>
       <div class="about-box">
-        <div class="about-img"> <img src="images/250x250.png" alt="images"> </div>
+        <div class="about-img"> <img src="" alt="images"> </div>
         <div class="about-info">
           <p>Suffered alteration in some passage of Lorem.</p>
           <ul class="social">
@@ -72,14 +72,16 @@
       <h2 class="widget-title">Popular Tag</h2>
       <div class="popular-box">
         <ul>
-          <li> <a href="javascript:void(0)">alteration</a> </li>
+          <!-- <li> <a href="javascript:void(0)">alteration</a> </li>
           <li> <a href="javascript:void(0)">altetion</a> </li>
           <li> <a href="javascript:void(0)">suffere</a> </li>
           <li> <a href="javascript:void(0)">passdfgtages</a> </li>
           <li> <a href="javascript:void(0)">alteon</a> </li>
-          <li> <a href="javascript:void(0)">eteratssion</a> </li>
+          <li> <a href="javascript:void(0)">eteratssion</a> </li> -->
+          <li ng-repeat="category in tags |  limitTo: 3" ng-click="goToTags(category.name)"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
         </ul>
       </div>
+      <a href="javascript:void(0)" class="btn"> Read More  <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
     </div>
     <!-- Tag Cloud Widget Ends -->
   </div>

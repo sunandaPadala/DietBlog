@@ -1,14 +1,7 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('blogDetailsCtrl', function($scope, blogService, blogDetails, ReusableCalls, $uibModal) {
-    //$scope.blogPageDetails = myService.getter();
-    //console.log($scope.blogPageDetails);
-    //$( ".blog-captions" ).html($scope.blogPageDetails.description);
-    //$($scope.blogPageDetails.description).appendTo($(".blog-captions"));
-    // $scope.blogPostId = $scope.blogPageDetails.id;
-
+  .controller('blogDetailsCtrl', function($scope, blogService, blogDetails, $uibModal) {
     $scope.details = blogDetails;
-    console.log($scope.details);
     $scope.comments = [{
       "id": 1,
       "comment": "Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the m injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the!",
@@ -43,21 +36,14 @@ angular.module('dietBlog')
           "name": $scope.commenterName
         }
       });
-      // angular.element('.loadingIndicator').show();
       blogService.postComments(id, commentDetails).then(function(response) {
-        // angular.element('.loadingIndicator').hide();
-        console.log(response);
         if (response.data.message == "SUCCESS") {
           $scope.commentText = '';
           $scope.commenterMail = '';
           $scope.commenterName = '';
 
           var mess = "Comments posted successfully.You can view once admin accept the comment."
-          //ReusableCalls.alertMessage("",mess);
           var modalInstance = $uibModal.open({
-            //animation: $ctrl.animationsEnabled,
-            //ariaLabelledBy: 'modal-title-top',
-            //ariaDescribedBy: 'modal-body-top',
             templateUrl: '../views/successModel.html',
             size: 'md',
             controller: function($scope) {
@@ -70,13 +56,7 @@ angular.module('dietBlog')
           });
         }
       }, function(error) {
-        // angular.element('.loadingIndicator').hide();
-        console.log(error);
-        //ReusableCalls.alertMessage("",error.error);
         var modalInstance = $uibModal.open({
-          //animation: $ctrl.animationsEnabled,
-          //ariaLabelledBy: 'modal-title-top',
-          //ariaDescribedBy: 'modal-body-top',
           templateUrl: '../views/successModel.html',
           size: 'md',
           controller: function($scope) {
@@ -90,10 +70,4 @@ angular.module('dietBlog')
       });
     };
 
-    // blogService.getSpecificData($scope.blogPostId).then(function(response) {
-    //   console.log(response);
-    //   $scope.blogPostResponse = response;
-    // }, function(error) {
-    //   console.log(error);
-    // });
   });

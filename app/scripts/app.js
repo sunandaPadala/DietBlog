@@ -76,7 +76,7 @@ angular
         views: {
           '': {
             templateUrl: "views/blog.html",
-            controller: 'MainCtrl'
+            controller: 'blogCtrl'
           },
           'grid@main.blog': {
             templateUrl: "views/blogGrid.html"
@@ -100,7 +100,6 @@ angular
               .then(function(response) {
                 var reqObj = {};
                 if (response.tips.length) {
-                  // reqObj=response;
                   response['currentPage'] = $stateParams.page;
                   deferred.resolve(response);
                 } else {
@@ -134,8 +133,16 @@ angular
         controller: "categoriesCtrl",
         resolve: {
           categoryArticles: ['categoryService', '$stateParams', function(categoryService, $stateParams) {
-            // $scope.categoryId = $stateParams.id;
             return categoryService.getArticlesByCategory($stateParams.id, 0, 1);
+          }]
+        }
+      }).state('main.tags', {
+        url: '/tags/:tagName',
+        templateUrl: "views/tags.html",
+        controller: "tagsCtrl",
+        resolve: {
+          tagsList: ['tagsService', '$stateParams', function(tagsService, $stateParams) {
+            return tagsService.getArticlesOfTag($stateParams.tagName, 0, 4);
           }]
         }
       });
@@ -156,42 +163,23 @@ angular
 angular.module('dietBlog').service('LoadingInterceptor', ['$q', '$rootScope', '$log',
   function($q, $rootScope, $log) {
     'use strict';
-
-    // var xhrCreations = 0;
-    // var xhrResolutions = 0;
     $rootScope.loading = 0;
-
-    // function isLoading() {
-    //     return xhrResolutions < xhrCreations;
-    // }
-
-    // function updateStatus() {
-    //     $rootScope.loading = isLoading();
-    // }
 
     return {
       request: function(config) {
-        // xhrCreations++;
-        // updateStatus();
         $rootScope.loading++;
         return config;
       },
       requestError: function(rejection) {
-        // xhrResolutions++;
-        // updateStatus();
         $rootScope.loading--;
         $log.error('Request error:', rejection);
         return $q.reject(rejection);
       },
       response: function(response) {
-        // xhrResolutions++;
-        // updateStatus();
         $rootScope.loading--;
         return response;
       },
       responseError: function(rejection) {
-        // xhrResolutions++;
-        // updateStatus();
         $rootScope.loading--;
         $log.error('Response error:', rejection);
         return $q.reject(rejection);
@@ -200,5 +188,5 @@ angular.module('dietBlog').service('LoadingInterceptor', ['$q', '$rootScope', '$
   }
 ]);
 angular.module('dietBlog').run(function($rootScope, $location) {
-    $rootScope.location = $location;
+  $rootScope.location = $location;
 });

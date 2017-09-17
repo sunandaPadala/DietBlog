@@ -20,10 +20,8 @@ app.service('blogService', ['$q', '$http', 'configSettings', function($q, $http,
     $http.get(requrl)
       .then(function(data) {
         deferred.resolve(data.data);
-        // angular.element('.loadingIndicator').hide();
       }, function(msg, code) {
         deferred.reject(msg);
-        // angular.element('.loadingIndicator').hide();
       });
     return deferred.promise;
   };
@@ -53,37 +51,3 @@ app.service('blogService', ['$q', '$http', 'configSettings', function($q, $http,
   };
 
 }]);
-
-app.factory("myService", function() {
-  var theValue = {};
-  theValue.setter = function(newValue) {
-    theValue.value = newValue;
-  }
-  theValue.getter = function() {
-    return theValue.value;
-  }
-  return theValue;
-});
-
-app
-  .factory("ReusableCalls", ["$timeout", "$state",
-    function($timeout, $state) {
-      var obj = {};
-      obj.alertMessage = function(ttl, msg) {
-        $timeout(function() {
-          var scope = angular.element("#okPopUp").scope();
-          scope.title = ttl;
-          scope.message = msg;
-          $("#okPopUp").css('display', 'block');
-          scope.OkPopup = function() {
-            $("#okPopUp").css('display', 'none');
-          };
-          scope.cancel = function() {
-            $("#okPopUp").css('display', 'none');
-          };
-
-        });
-      };
-      return obj;
-    }
-  ]);
