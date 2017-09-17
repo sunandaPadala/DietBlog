@@ -50,7 +50,7 @@ angular
           },
           'nav@main': {
             templateUrl: "views/nav.html",
-            // controller:"mainviewCtrl"
+            controller: "navCtrl"
           },
           'footer@main': {
             templateUrl: "views/footer.html",
@@ -59,7 +59,7 @@ angular
           },
           'mobileMenu@main': {
             templateUrl: "views/mobilemenu.html",
-            // controller:"mainviewCtrl"
+            controller: "navCtrl"
 
           },
         }
@@ -134,7 +134,8 @@ angular
         controller: "categoriesCtrl",
         resolve: {
           categoryArticles: ['categoryService', '$stateParams', function(categoryService, $stateParams) {
-            return categoryService.getArticlesByCategory($stateParams.id);
+            // $scope.categoryId = $stateParams.id;
+            return categoryService.getArticlesByCategory($stateParams.id, 0, 1);
           }]
         }
       });
