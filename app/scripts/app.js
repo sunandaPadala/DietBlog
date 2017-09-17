@@ -199,3 +199,6 @@ angular.module('dietBlog').service('LoadingInterceptor', ['$q', '$rootScope', '$
     };
   }
 ]);
+angular.module('dietBlog').run(function($rootScope, $location) {
+    $rootScope.location = $location;
+});
