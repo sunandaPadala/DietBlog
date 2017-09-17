@@ -119,26 +119,6 @@ angular
           }],
 
         }
-        // ,
-        // resolvePolicy: { async: 'WAIT',when:'EAGER' },
-        // redirectTo:function(trans){
-        // //   console.log("in redirec");
-        //   var resolvePromise = trans.injector().getAsync('gridData');
-        //   // if(trans.params().page !== )
-
-        //    return resolvePromise.then(function(response){
-        //       console.log(response);
-        //       if(trans.params().page !== response.currentPage){
-        //         return { state: 'main.blog', params: { page: response.currentPage,itemsPerPage:4 } };
-        //       }
-        //       // if(!response.tips.length){
-        //        // return { state: 'main.blog', params: { page: 1,itemsPerPage:4 } };
-        //       // }
-        //   },function(error){
-        //     console.log(error);
-        //   });
-        // }
-
       }).state('main.blogDetails', {
         url: '/blogDetails/:id',
         templateUrl: "views/blogDetails.html",
@@ -168,7 +148,6 @@ angular
           }]
         }
       });
-    // $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('');
 
   }).directive("okPopUp", function() {
@@ -229,3 +208,6 @@ angular.module('dietBlog').service('LoadingInterceptor', ['$q', '$rootScope', '$
     };
   }
 ]);
+angular.module('dietBlog').run(function($rootScope, $location) {
+    $rootScope.location = $location;
+});
