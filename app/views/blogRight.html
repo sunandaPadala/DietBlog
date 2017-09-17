@@ -72,14 +72,16 @@
       <h2 class="widget-title">Popular Tag</h2>
       <div class="popular-box">
         <ul>
-          <li> <a href="javascript:void(0)">alteration</a> </li>
+          <!-- <li> <a href="javascript:void(0)">alteration</a> </li>
           <li> <a href="javascript:void(0)">altetion</a> </li>
           <li> <a href="javascript:void(0)">suffere</a> </li>
           <li> <a href="javascript:void(0)">passdfgtages</a> </li>
           <li> <a href="javascript:void(0)">alteon</a> </li>
-          <li> <a href="javascript:void(0)">eteratssion</a> </li>
+          <li> <a href="javascript:void(0)">eteratssion</a> </li> -->
+          <li ng-repeat="category in tags |  limitTo: 3" ng-click="goToTags(category.name)"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
         </ul>
       </div>
+      <a href="javascript:void(0)" class="btn"> Read More  <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
     </div>
     <!-- Tag Cloud Widget Ends -->
   </div>

@@ -158,6 +158,15 @@ angular
             return categoryService.getArticlesByCategory($stateParams.id, 0, 1);
           }]
         }
+      }).state('main.tags', {
+        url: '/tags/:tagName',
+        templateUrl: "views/tags.html",
+        controller: "tagsCtrl",
+        resolve: {
+          tagsList: ['tagsService', '$stateParams', function(tagsService, $stateParams) {
+            return tagsService.getArticlesOfTag($stateParams.tagName, 0, 4);
+          }]
+        }
       });
     // $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('');

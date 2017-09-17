@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', 'ReusableCalls', '$uibModal', '$state', function($scope, mainviewData, $window, mainViewService, rCall, $uibModal, $state) {
+  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', 'ReusableCalls', '$uibModal', '$state', 'tagsService', function($scope, mainviewData, $window, mainViewService, rCall, $uibModal, $state, tagsService) {
     $scope.mainviewData = mainviewData;
     $scope.recentPosts = [];
 
@@ -20,6 +20,11 @@ angular.module('dietBlog')
     });
     mainViewService.categories().then(function(response) {
       $scope.categories = response.data;
+    }, function(error) {
+      console.log(error);
+    });
+    tagsService.getAllTagsList().then(function(response) {
+      $scope.tags = response.data;
     }, function(error) {
       console.log(error);
     });
@@ -110,6 +115,11 @@ angular.module('dietBlog')
     };
     $scope.goToCategories = function(categoryId) {
       $state.go('main.categories', { id: categoryId });
+
+    };
+    $scope.goToTags = function(name) {
+      //jst chking fr tags articles with name need to change further
+      $state.go('main.tags', { tagName: name });
 
     };
 
