@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dietBlog')
-  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', 'ReusableCalls', '$uibModal', '$state', 'tagsService', function($scope, mainviewData, $window, mainViewService, rCall, $uibModal, $state, tagsService) {
+  .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', '$uibModal', '$state', 'tagsService', function($scope, mainviewData, $window, mainViewService, $uibModal, $state, tagsService) {
     $scope.mainviewData = mainviewData;
     $scope.recentPosts = [];
 
@@ -68,16 +68,8 @@ angular.module('dietBlog')
 
     $scope.usersubscribe = function(email) {
       if ($scope.usersubscrip !== "") {
-        angular.element('.loadingIndicator').show();
         mainViewService.subscribe(email).then(function(response) {
-          angular.element('.loadingIndicator').hide();
-
-          //$scope.usersubscrip = "";
-          //rCall.alertMessage("",response.data.message);
           var modalInstance = $uibModal.open({
-            //animation: $ctrl.animationsEnabled,
-            //ariaLabelledBy: 'modal-title-top',
-            //ariaDescribedBy: 'modal-body-top',
             templateUrl: '../views/successModel.html',
             size: 'md',
             controller: function($scope) {
@@ -90,14 +82,7 @@ angular.module('dietBlog')
           });
 
         }, function(msg) {
-          // angular.element('.loadingIndicator').hide();
-          console.log(msg);
-
-          //rCall.alertMessage("",msg);
           var modalInstance = $uibModal.open({
-            //animation: $ctrl.animationsEnabled,
-            //ariaLabelledBy: 'modal-title-top',
-            //ariaDescribedBy: 'modal-body-top',
             templateUrl: '../views/successModel.html',
             size: 'md',
             controller: function($scope) {
@@ -118,7 +103,6 @@ angular.module('dietBlog')
 
     };
     $scope.goToTags = function(name) {
-      //jst chking fr tags articles with name need to change further
       $state.go('main.tags', { tagName: name });
 
     };
