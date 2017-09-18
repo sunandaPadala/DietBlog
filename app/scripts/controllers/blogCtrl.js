@@ -3,7 +3,7 @@ angular.module('dietBlog')
   .controller('blogCtrl', function($scope, $state, blogService, angularGridInstance, configSettings, gridData) {
     $scope.awesomeThings = [];
     $scope.currentPage = 1;
-    $scope.itemsPerPage = 4;
+    $scope.itemsPerPage = 1;
     $scope.totalItems = 0;
     $scope.issearch = false;
     $scope.formData = {};
@@ -35,17 +35,28 @@ angular.module('dietBlog')
     };
     $scope.pageChangeHandler = function(nmbr) {
       $scope.currentPage = nmbr;
-      $state.go('main.blog', { page: nmbr });
-      $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
+      if ($scope.issearch) {
+        $scope.search($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
+      } else {
+
+        $state.go('main.blog', { page: nmbr });
+        $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
+      }
+
       $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top - 50 }, 500);
     };
 
     $scope.getIdForShare = function(getId) {
       $scope.shareUrl = configSettings.baseUrl + 'blogDetails/' + getId.id;
     };
-    $scope.search = function() {
+    $scope.search = function(limit, skip) {
       var searchText = $scope.formData.searchString;
-      blogService.articlesSearch(searchText).then(function(response) {
+      var pageLimit = limit >= 0 ? limit : 2;
+      var pageSkip = skip >= 0 ? skip : 0;
+      if (pageSkip == 0) {
+        $scope.currentPage = 1;
+      }
+      blogService.articlesSearch(searchText, pageLimit, pageSkip).then(function(response) {
         $scope.awesomeThings = response.tips;
         $scope.totalItems = response.totalCount;
         if (angularGridInstance.gallery) {
