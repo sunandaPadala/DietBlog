@@ -102,8 +102,8 @@ angular.module('dietBlog')
       $state.go('main.categories', { id: categoryId });
 
     };
-    $scope.goToTags = function(name) {
-      $state.go('main.tags', { tagName: name });
+    $scope.goToTags = function() {
+      $state.go('main.tags');
 
     };
 

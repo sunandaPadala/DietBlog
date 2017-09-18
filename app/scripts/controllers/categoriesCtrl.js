@@ -24,15 +24,25 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   };
   $scope.pageChangeHandler = function(nmbr) {
     $scope.currentPage = nmbr;
-    $scope.paginate(categoryId, ($scope.itemsPerPage * ($scope.currentPage - 1)), $scope.itemsPerPage);
+    if ($scope.issearch) {
+      $scope.search($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
+    } else {
+      $scope.paginate(categoryId, ($scope.itemsPerPage * ($scope.currentPage - 1)), $scope.itemsPerPage);
+    }
+
   };
 
   $scope.getIdForShare = function(getId) {
     $scope.shareUrl = configSettings.baseUrl + 'blogDetails/' + getId.id;
   };
-  $scope.search = function() {
+  $scope.search = function(limit, skip) {
     var searchText = $scope.formData.searchString;
-    categoryService.categoryArticlesSearch(categoryId, searchText, 0, $scope.itemsPerPage).then(function(response) {
+    var pageLimit = limit >= 0 ? limit : 2;
+    var pageSkip = skip >= 0 ? skip : 0;
+    if (pageSkip == 0) {
+      $scope.currentPage = 1;
+    }
+    categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
       $scope.categoryData = response.data.tips;
       $scope.totalItems = response.data.totalCount;
       if (angularGridInstance.category) {

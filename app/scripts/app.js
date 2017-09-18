@@ -137,28 +137,17 @@ angular
           }]
         }
       }).state('main.tags', {
-        url: '/tags/:tagName',
+        url: '/tags',
         templateUrl: "views/tags.html",
         controller: "tagsCtrl",
         resolve: {
-          tagsList: ['tagsService', '$stateParams', function(tagsService, $stateParams) {
-            return tagsService.getArticlesOfTag($stateParams.tagName, 0, 4);
+          tagsList: ['tagsService', function(tagsService) {
+            return tagsService.getAllTagsList();
           }]
         }
       });
     $locationProvider.hashPrefix('');
 
-  }).directive("okPopUp", function() {
-    return {
-      restrict: "E",
-      templateUrl: "views/OkPopup.html",
-      transclude: true,
-      link: function($scope, element, attrs, pageCtrl) {
-        $scope.closepopup = function() {
-          $("#okPopUp").css('display', 'none');
-        };
-      }
-    };
   });
 angular.module('dietBlog').service('LoadingInterceptor', ['$q', '$rootScope', '$log',
   function($q, $rootScope, $log) {
