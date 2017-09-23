@@ -104,7 +104,9 @@ angular.module('dietBlog')
     };
     $scope.goToTags = function() {
       $state.go('main.tags');
-
     };
+    $scope.getTagArticles = function(tagName) {
+      $state.go('main.tagArticles', { tagName: tagName });
+    }
 
   }]);

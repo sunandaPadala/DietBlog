@@ -13,11 +13,15 @@ app.service('tagsService', ['$q', '$http', 'configSettings', function($q, $http,
       });
     return deferred.promise;
   };
-  this.getArticlesOfTag = function(tagName, skip, limit) {
+  this.getArticlesOfTag = function(tagName, skip, limit, str) {
+    if (str === undefined) {
+      str = '';
+    }
     var deferred = $q.defer();
-    var requrl = configSettings.baseUrl + 'articles/' + tagName + '/list?skip=' + skip + '&limit=' + limit;
+    var requrl = configSettings.baseUrl + 'articles/' + tagName + '/list?str=' + str + '&skip=' + skip + '&limit=' + limit;
     $http.get(requrl)
       .then(function(data) {
+        data.tagName = tagName;
         deferred.resolve(data);
       }, function(msg, code) {
         deferred.reject(msg);
