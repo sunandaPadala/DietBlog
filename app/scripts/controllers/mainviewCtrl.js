@@ -5,9 +5,9 @@ angular.module('dietBlog')
     $scope.recentPosts = [];
 
     mainViewService.coverblog().then(function(response) {
-      $scope.coverblog = response.data.tips[0];
+      $scope.coverblog = response.data;
       $scope.backgroundimg = {
-        background: 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' + response.data.tips[0].images[0] + ') fixed center center'
+        background: 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' + response.data.images[0] + ') fixed center center'
       };
     }, function(error) {
       console.log(error);
@@ -108,5 +108,7 @@ angular.module('dietBlog')
     $scope.getTagArticles = function(tagName) {
       $state.go('main.tagArticles', { tagName: tagName });
     }
-
+    $scope.loadBlogDetails = function(pic) {
+      $state.go('main.blogDetails', { id: pic.id });
+    };
   }]);
