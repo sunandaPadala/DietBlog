@@ -4,7 +4,7 @@
     <div class="widget widget_search">
       <h2 class="widget-title">Search</h2>
       <form>
-        <input type="text" ng-model="formData.searchString" ng-keydown="$event.keyCode === 13 && search()"> {{formData.searchString}}
+        <input type="text" ng-model="formData.searchString" ng-keypress="search($event,3,0,true)"> {{formData.searchString}}
         <button type="button" class="search-submit" ng-if="!issearch" ng-click="search()"><i class="fa fa-search"></i></button>
         <button type="button" class="search-submit" ng-if="issearch" ng-click="cancel()"><i class="fa fa-times-circle-o"></i></button>
       </form>
@@ -14,7 +14,7 @@
     <div class="widget widget_about">
       <h2 class="widget-title">About Me</h2>
       <div class="about-box">
-        <div class="about-img"> <img src="" alt="images"> </div>
+        <div class="about-img"> <img ng-src="" alt="images"> </div>
         <div class="about-info">
           <p>Suffered alteration in some passage of Lorem.</p>
           <ul class="social">
