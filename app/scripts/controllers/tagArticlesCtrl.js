@@ -1,19 +1,19 @@
 'use strict';
-angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArticles', 'categoryService', 'angularGridInstance', '$state', 'configSettings', function($scope, categoryArticles, categoryService, angularGridInstance, $state, configSettings) {
-  $scope.categoryData = categoryArticles.data.tips;
+angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles', 'tagsService', 'angularGridInstance', '$state', 'configSettings', function($scope, tagArticles, tagsService, angularGridInstance, $state, configSettings) {
+  $scope.tagArticlesData = tagArticles.data.tips;
   $scope.currentPage = 1;
   $scope.itemsPerPage = configSettings.itemsPerPage;
   $scope.issearch = false;
   $scope.formData = {};
   $scope.noResults = false;
-  $scope.totalItems = categoryArticles.data.totalCount;
-  var categoryId = categoryArticles.categoryId;
-  $scope.paginate = function(categoryId, skip, limit) {
-    categoryService.getArticlesByCategory(categoryId, skip, limit).then(function(response) {
+  $scope.totalItems = tagArticles.data.totalCount;
+  var tagName = tagArticles.tagName;
+  $scope.paginate = function(tagName, skip, limit) {
+    tagsService.getArticlesOfTag(tagName, skip, limit).then(function(response) {
       $scope.totalItems = response.data.totalCount;
-      $scope.categoryData = response.data.tips;
+      $scope.tagArticlesData = response.data.tips;
       if (angularGridInstance.category) {
-        angularGridInstance.category.refresh();
+        angularGridInstance.tagArticles.refresh();
       }
     }, function(error) {
       console.log(error);
@@ -27,7 +27,7 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
     if ($scope.issearch) {
       $scope.search($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.currentPage - 1)));
     } else {
-      $scope.paginate(categoryId, ($scope.itemsPerPage * ($scope.currentPage - 1)), $scope.itemsPerPage);
+      $scope.paginate(tagName, ($scope.itemsPerPage * ($scope.currentPage - 1)), $scope.itemsPerPage);
     }
 
   };
@@ -42,17 +42,17 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
     if (pageSkip == 0) {
       $scope.currentPage = 1;
     }
-    categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
-      $scope.categoryData = response.data.tips;
+    tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
+      $scope.tagArticlesData = response.data.tips;
       $scope.totalItems = response.data.totalCount;
-      if (angularGridInstance.category) {
-        angularGridInstance.category.refresh();
+      if (angularGridInstance.tagArticles) {
+        angularGridInstance.tagArticles.refresh();
       }
 
-      if ($scope.categoryData.length <= 0) {
+      if ($scope.tagArticlesData.length <= 0) {
         $scope.noResults = true;
       } else {
-        angularGridInstance.category.refresh();
+        angularGridInstance.tagArticles.refresh();
       }
     }, function(error) {
       console.log(error);
@@ -65,7 +65,7 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
     $scope.formData.searchString = '';
     $scope.issearch = false;
     $scope.noResults = false;
-    $scope.paginate(categoryId, 0, $scope.itemsPerPage);
+    $scope.paginate(tagName, 0, $scope.itemsPerPage);
   };
 
 }]);
