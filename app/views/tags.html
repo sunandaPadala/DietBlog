@@ -2,9 +2,9 @@
   <uib-accordion close-others="oneAtATime">
     <div uib-accordion-group class="panel-default" ng-repeat="tag in tagsList" is-open="tag.open">
       <uib-accordion-heading>
-        {{tag.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': tag.open, 'glyphicon-chevron-right': !tag.open}"></i>
+        <p ng-click="getTagArticles(tag.name)">{{tag.name}}</p> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': tag.open, 'glyphicon-chevron-right': !tag.open}"></i>
       </uib-accordion-heading>
-      {{tag.name}}
+      <p ng-click="getTagArticles(tag.name)">{{tag.name}}</p>
     </div>
   </uib-accordion>
 </div>

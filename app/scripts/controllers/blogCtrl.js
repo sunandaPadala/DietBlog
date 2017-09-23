@@ -2,12 +2,13 @@
 angular.module('dietBlog')
   .controller('blogCtrl', function($scope, $state, blogService, angularGridInstance, configSettings, gridData) {
     $scope.awesomeThings = [];
-    // $scope.currentPage = 1;
+
     $scope.pagination = {
       currentPage:  1
     };
-    $scope.itemsPerPage = 3;
-    // $scope.totalItems = 0;
+
+    $scope.itemsPerPage = configSettings.itemsPerPage;
+    $scope.totalItems = 0;
     $scope.issearch = false;
     $scope.formData = {};
     $scope.noResults = false;

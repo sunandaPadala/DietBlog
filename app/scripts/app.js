@@ -25,7 +25,8 @@ angular
     'angularUtils.directives.dirPagination'
   ]).constant('configSettings', {
     'baseUrl': 'https://right-my-diet.herokuapp.com/',
-    'someElseSetting': 'settingValue'
+    'someElseSetting': 'settingValue',
+    'itemsPerPage': 4
     //other setting will also be there.
   }).config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $httpProvider.interceptors.push('LoadingInterceptor');
@@ -132,8 +133,8 @@ angular
         templateUrl: "views/categories.html",
         controller: "categoriesCtrl",
         resolve: {
-          categoryArticles: ['categoryService', '$stateParams', function(categoryService, $stateParams) {
-            return categoryService.getArticlesByCategory($stateParams.id, 0, 1);
+          categoryArticles: ['categoryService', '$stateParams', 'configSettings', function(categoryService, $stateParams, configSettings) {
+            return categoryService.getArticlesByCategory($stateParams.id, 0, configSettings.itemsPerPage);
           }]
         }
       }).state('main.tags', {
@@ -143,6 +144,15 @@ angular
         resolve: {
           tagsList: ['tagsService', function(tagsService) {
             return tagsService.getAllTagsList();
+          }]
+        }
+      }).state('main.tagArticles', {
+        url: '/tagArticles/:tagName',
+        templateUrl: "views/tagArticles.html",
+        controller: "tagArticlesCtrl",
+        resolve: {
+          tagArticles: ['tagsService', '$stateParams', 'configSettings', function(tagsService, $stateParams, configSettings) {
+            return tagsService.getArticlesOfTag($stateParams.tagName, 0, configSettings.itemsPerPage);
           }]
         }
       });
