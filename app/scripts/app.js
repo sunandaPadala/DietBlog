@@ -50,8 +50,7 @@ angular
 
           },
           'nav@main': {
-            templateUrl: "views/nav.html",
-            controller: "navCtrl"
+            templateUrl: "views/nav.html"
           },
           'footer@main': {
             templateUrl: "views/footer.html",
@@ -59,8 +58,7 @@ angular
 
           },
           'mobileMenu@main': {
-            templateUrl: "views/mobilemenu.html",
-            controller: "navCtrl"
+            templateUrl: "views/mobilemenu.html"
 
           },
         }
@@ -155,6 +153,13 @@ angular
             return tagsService.getArticlesOfTag($stateParams.tagName, 0, configSettings.itemsPerPage);
           }]
         }
+      }).state('main.contact', {
+        url: '/contact',
+        templateUrl: "views/contact.html"
+      }).state('main.doctors', {
+        url: '/doctors',
+        templateUrl: "views/doctorsGrid.html",
+        controller: 'doctorsCtrl'
       });
     $locationProvider.hashPrefix('');
 

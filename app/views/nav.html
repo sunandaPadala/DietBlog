@@ -19,7 +19,7 @@
             <!-- Site Logo Ends -->
           </div>
           <div class="home-menu">
-          {{}}
+            {{}}
             <div class="collapse navbar-collapse" id="main-menu">
               <ul class="nav navbar-nav navbar-right">
                 <li><a ui-sref="main.blog({page:1})" ng-class="{menuActive: location.path().indexOf('/blog')!==-1}">Home</a></li>
@@ -30,7 +30,8 @@
                       <a href=" javascript:void(0) ">{{category.name||'no name'}}</a> </li>
                   </ul>
                 </li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a ui-sref="main.doctors" ng-class="{menuActive: location.path().indexOf('/doctors')!==-1}">Doctors</a></li>
+                <li><a ui-sref="main.contact" ng-class="{menuActive: location.path().indexOf('/contact')!==-1}">Contact Us</a></li>
               </ul>
             </div>
             <!-- Search Form Begins -->

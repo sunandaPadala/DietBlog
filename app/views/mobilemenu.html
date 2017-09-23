@@ -1,13 +1,14 @@
 <div class="main_menucontent overlapblackbg" ng-class="{'menuopen': mainviewData.menuOpen}" ng-click="toggleMenu()">{{mainviewData.menuOpen}}</div>
 <div class="menu-wrap menu-mob" ng-class="{'move-menu': mainviewData.menuOpen}"><a href="javascript:void(0)" class="close" ng-click="toggleMenu()"><i class="fa fa-times"></i></a><a href="#" class="menu-logo"> <img src="images/logo-footer.png" alt="images"> </a>
   <ul class="nav navbar-nav navbar-right">
-    <li><a ui-sref="main.home" ng-class="{menuActive: $location.path() == '/home'}">Home</a></li>
-    <li><a ui-sref="main.about" ng-class="{menuActive: $location.path() == '/about'}">About</a></li>
-    <li class="has-children" ng-click="mobmenutoggle()"><span class="menu-click"><i class="menu-arrow fa fa-angle-right"></i></span><a href="javascript:void(0)" ng-class="{menuActive: $location.path().includes('/categories')}" href="javascript:void(0)">CATEGORIES</a>
+    <li><a ui-sref="main.blog({page:1})" ng-class="{menuActive: location.path().indexOf('/blog')!==-1}">Home</a></li>
+    <li><a ui-sref="main.about" ng-class="{menuActive: location.path().indexOf('/about')!==-1}">About</a></li>
+    <li class="has-children" ng-click="mobmenutoggle()"><span class="menu-click"><i class="menu-arrow fa fa-angle-right"></i></span><a href="javascript:void(0)" ng-class="{menuActive: location.path().indexOf('/categories')!==-1}" href="javascript:void(0)">CATEGORIES</a>
       <ul class="sub-menu categ">
         <li ng-repeat="category in categories" ng-click="goToCategories(category.id)"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
       </ul>
     </li>
-    <li><a href="#">Contact Us</a></li>
+    <li><a ui-sref="main.doctors" ng-class="{menuActive: location.path().indexOf('/doctors')!==-1}">Doctors</a></li>
+    <li><a ui-sref="main.contact" ng-class="{menuActive: location.path().indexOf('/contact')!==-1}">Contact Us</a></li>
   </ul>
 </div>
