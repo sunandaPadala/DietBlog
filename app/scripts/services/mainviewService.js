@@ -43,7 +43,7 @@ app.service('mainViewService', ['$q', '$http', 'configSettings', function($q, $h
   this.coverblog = function() {
 
     var deferred = $q.defer();
-    var requrl = configSettings.baseUrl + 'all/articles?limit=10';
+    var requrl = configSettings.baseUrl + 'article/get/cover/blog';
     $http.get(requrl)
       .then(function(data) {
         deferred.resolve(data);
