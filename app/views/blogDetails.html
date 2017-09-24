@@ -152,8 +152,8 @@
           <div class="widget widget_search">
             <h2 class="widget-title">Search</h2>
             <form>
-              <input type="text">
-              <button type="button" class="search-submit"><i class="fa fa-search"></i></button>
+              <input type="text" ng-model="searchStr" ng-keydown="$event.keyCode === 13 && gotoSearchView(searchStr)">
+              <button type="button" class="search-submit" ng-click="gotoSearchView(searchStr)"><i class="fa fa-search"></i></button>
             </form>
           </div>
           <!-- Search Form Widget Ends -->

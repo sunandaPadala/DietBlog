@@ -111,4 +111,8 @@ angular.module('dietBlog')
     $scope.loadBlogDetails = function(pic) {
       $state.go('main.blogDetails', { id: pic.id });
     };
+    $scope.gotoSearchView = function(searchStr) {
+      console.log(searchStr);
+      $state.go('main.search', { searchStr: searchStr });
+    };
   }]);
