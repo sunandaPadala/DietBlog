@@ -1,10 +1,21 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 75px;">
   <uib-accordion close-others="oneAtATime">
-    <div uib-accordion-group class="panel-default" ng-repeat="tag in tagsList" is-open="tag.open">
+    <!-- <div uib-accordion-group class="panel-default" ng-repeat="tag in tagsList" is-open="tag.open">
       <uib-accordion-heading>
         <p ng-click="getTagArticles(tag.name)">{{tag.name}}</p> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': tag.open, 'glyphicon-chevron-right': !tag.open}"></i>
       </uib-accordion-heading>
       <p ng-click="getTagArticles(tag.name)">{{tag.name}}</p>
+    </div> -->
+    <div ng-repeat="letter in alphabet">
+        <div ng-show="(tagsList | firstLetter:letter).length">
+             <div uib-accordion-group class="panel-default" is-open="tag.open">
+              <uib-accordion-heading>
+                <p> {{letter}}</p> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': tag.open, 'glyphicon-chevron-right': !tag.open}"></i>
+              </uib-accordion-heading>
+              <p ng-click="getTagArticles(tag.name)" ng-repeat="tag in tagsList|firstLetter:letter">{{tag.name}}</p>
+            </div>
+        </div>
+     
     </div>
   </uib-accordion>
 </div>
