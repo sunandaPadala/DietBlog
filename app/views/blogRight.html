@@ -45,7 +45,7 @@
       <div class="recent-box" ng-repeat="post in recentPosts">
         <div class="recent-img"> <img ng-src="{{post.images[0]}}" alt="images"> </div>
         <div class="about-info recent-info">
-          <h4> <a href="javascript:void(0)">{{post.title}}</a> </h4>
+          <h4> <a href="javascript:void(0)" ui-sref="main.blogDetails({id:post.id})">{{post.title}}</a> </h4>
           <h5>{{post.createdAt|date:"MMMM dd, y"}}</h5>
         </div>
       </div>
