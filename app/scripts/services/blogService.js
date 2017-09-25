@@ -31,6 +31,7 @@ app.service('blogService', ['$q', '$http', 'configSettings', function($q, $http,
     limit;
     $http.get(requrl)
       .then(function(data) {
+        data.data.searchString = searchString;
         deferred.resolve(data.data);
       }, function(msg, code) {
         deferred.reject(msg);

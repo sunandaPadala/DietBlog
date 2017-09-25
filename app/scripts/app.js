@@ -160,6 +160,15 @@ angular
         url: '/doctors',
         templateUrl: "views/doctorsGrid.html",
         controller: 'doctorsCtrl'
+      }).state('main.search', {
+        url: '/search/:searchStr',
+        templateUrl: "views/searchView.html",
+        controller: 'searchViewCtrl',
+        resolve: {
+          searchData: ['blogService', '$stateParams', 'configSettings', function(blogService, $stateParams, configSettings) {
+            return blogService.articlesSearch($stateParams.searchStr, configSettings.itemsPerPage, 0);
+          }]
+        }
       });
     $locationProvider.hashPrefix('');
 
