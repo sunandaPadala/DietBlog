@@ -39,13 +39,13 @@ angular.module('dietBlog')
     };
     $scope.pageChangeHandler = function(nmbr) {
       // $scope.currentPage = nmbr;
-      if ($scope.issearch) {
-        $scope.search('', $scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), null);
-      } else {
+      /*  if ($scope.issearch) {
+          $scope.search('', $scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), null);
+        } else {*/
 
-        $state.go('main.blog', { page: nmbr });
-        $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)));
-      }
+      $state.go('main.blog', { page: nmbr });
+      $scope.paginate($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)));
+      /* }*/
 
       $("html, body").animate({ scrollTop: $('#gridcontainer').offset().top - 50 }, 500);
     };
