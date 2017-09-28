@@ -4,7 +4,7 @@ angular.module('dietBlog')
     $scope.searchItems = searchData.tips;
     $scope.searchText = searchData.searchString;
     $scope.pagination = {
-      currentPage: 1
+      currentPage: $state.params.page
     };
 
     $scope.itemsPerPage = configSettings.itemsPerPage;
@@ -42,7 +42,7 @@ angular.module('dietBlog')
       $state.go('main.blogDetails', { id: pic.id });
     };
     $scope.pageChangeHandler = function(nmbr) {
-
+      $state.go('main.search', { page:nmbr });
       $scope.paginate($scope.searchText, $scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)));
     };
 
@@ -52,7 +52,7 @@ angular.module('dietBlog')
     $scope.search = function() {
       $scope.noResults = false;
 
-      if (true) {
+      if ($scope.formData.searchString.trim() !=="") {
         var searchText = $scope.formData.searchString;
         $scope.searchText = searchText;
         var pageLimit = configSettings.itemsPerPage;
@@ -63,7 +63,7 @@ angular.module('dietBlog')
           if (angularGridInstance.searchGrid) {
             angularGridInstance.searchGrid.refresh();
           }
-
+           $state.go('main.search', { searchStr: searchText,page:1 });
           if ($scope.searchItems.length <= 0) {
             $scope.noResults = true;
           } else {

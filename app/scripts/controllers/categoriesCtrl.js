@@ -3,11 +3,16 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   $scope.categoryData = categoryArticles.data.tips;
   // $scope.currentPage = 1;
   $scope.pagination = {
-      currentPage:  1
+      currentPage:  $state.params.page
     };
   $scope.itemsPerPage = configSettings.itemsPerPage;
-  $scope.issearch = false;
   $scope.formData = {};
+  if($state.params.searchstr.trim()!==''){
+  $scope.issearch = true;
+  $scope.formData.searchString=$state.params.searchstr;
+  }else{
+  $scope.issearch = false;
+  }
   $scope.noResults = false;
   $scope.totalItems = categoryArticles.data.totalCount;
   var categoryId = categoryArticles.categoryId;
@@ -28,8 +33,12 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   $scope.pageChangeHandler = function(nmbr) {
     // $scope.currentPage = nmbr;
     if ($scope.issearch) {
+      $state.go('main.categories', { searchstr: $scope.formData.searchString,page:nmbr });
+
       $scope.search($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)));
     } else {
+      $state.go('main.categories', { page:nmbr,searchstr: $scope.formData.searchString});
+
       $scope.paginate(categoryId, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
     }
 
@@ -42,13 +51,12 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
     var searchText = $scope.formData.searchString;
     var pageLimit = limit >= 0 ? limit : configSettings.itemsPerPage;
     var pageSkip = skip >= 0 ? skip : 0;
-    // if (pageSkip == 0) {
-    //   $scope.pagination.currentPage = 1;
-    // }
     $scope.issearch = true;
 
     if(fromUser){
       if($scope.pagination.currentPage==1){
+        $state.go('main.categories', { searchstr: $scope.formData.searchString,page:1 });
+
            categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
             $scope.categoryData = response.data.tips;
             $scope.totalItems = response.data.totalCount;
@@ -94,7 +102,8 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
     $scope.noResults = false;
     if($scope.pagination.currentPage==1){
        // $scope.paginate($scope.itemsPerPage, 0);
-    $scope.paginate(categoryId, 0, $scope.itemsPerPage);
+        $state.go('main.categories', { searchstr: $scope.formData.searchString,page:1 });
+        $scope.paginate(categoryId, 0, $scope.itemsPerPage);
 
       }else{
       $scope.pagination.currentPage=1;
