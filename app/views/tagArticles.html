@@ -3,7 +3,7 @@
     <div ng-if="noResults">No results were found for the search string "<b>{{formData.searchString}}</b>"</div>
     <div>
       <ul angular-grid="tagArticlesData" ag-grid-width="300" ag-gutter-size="12" ag-id="tagArticles" ag-refresh-on-img-load="true">
-        <li dir-paginate="pic in tagArticlesData | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="currentPage" total-items=totalItems>
+        <li dir-paginate="pic in tagArticlesData | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="pagination.currentPage" total-items=totalItems>
           <img ng-src="{{pic.images[0]}}" class="grid-img img-responsive" style="margin-bottom:20px;" />
           <h2><a style="color:black;">{{pic.title}}</a></h2>
           <ul class="below-blog-list">
@@ -76,7 +76,7 @@
                 <a href="javascript:void(0)"> <i class="fa fa-youtube"></i> </a>
               </li>
             </ul>
-            <a href="javascript:void(0)" class="continue-read">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="javascript:void(0)" ui-sref="main.about" class="continue-read">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>

@@ -2,11 +2,17 @@
 angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles', 'tagsService', 'angularGridInstance', '$state', 'configSettings', function($scope, tagArticles, tagsService, angularGridInstance, $state, configSettings) {
   $scope.tagArticlesData = tagArticles.data.tips;
  $scope.pagination = {
-      currentPage:  1
+      currentPage:  $state.params.page
     };
   $scope.itemsPerPage = configSettings.itemsPerPage;
+   $scope.formData = {};
+  // $scope.issearch = false;
+ if($state.params.searchstr.trim()!==''){
+  $scope.issearch = true;
+  $scope.formData.searchString=$state.params.searchstr;
+  }else{
   $scope.issearch = false;
-  $scope.formData = {};
+  }
   $scope.noResults = false;
   $scope.totalItems = tagArticles.data.totalCount;
   var tagName = tagArticles.tagName;
@@ -14,7 +20,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     tagsService.getArticlesOfTag(tagName, skip, limit).then(function(response) {
       $scope.totalItems = response.data.totalCount;
       $scope.tagArticlesData = response.data.tips;
-      if (angularGridInstance.category) {
+      if (angularGridInstance.tagArticles) {
         angularGridInstance.tagArticles.refresh();
       }
     }, function(error) {
@@ -27,8 +33,12 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   $scope.pageChangeHandler = function(nmbr) {
     // $scope.currentPage = nmbr;
     if ($scope.issearch) {
+        $state.go('main.tagArticles', { page:nmbr,searchstr: $scope.formData.searchString });
+
       $scope.search($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)));
     } else {
+        $state.go('main.tagArticles', { page:nmbr,searchstr: $scope.formData.searchString });
+
       $scope.paginate(tagName, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
     }
 
@@ -39,7 +49,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   };
   $scope.search = function(limit, skip,fromUser) {
     var searchText = $scope.formData.searchString;
-    var pageLimit = limit >= 0 ? limit : 2;
+    var pageLimit = limit >= 0 ? limit : configSettings.itemsPerPage;
     var pageSkip = skip >= 0 ? skip : 0;
     // if (pageSkip == 0) {
     //   $scope.currentPage = 1;
@@ -47,6 +57,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     $scope.issearch = true;
     if(fromUser){
        if($scope.pagination.currentPage==1){
+        $state.go('main.tagArticles', { page:1,searchstr: $scope.formData.searchString });
           tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
               $scope.tagArticlesData = response.data.tips;
               $scope.totalItems = response.data.totalCount;
@@ -91,6 +102,8 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     $scope.issearch = false;
     $scope.noResults = false;
     if($scope.pagination.currentPage==1){
+        $state.go('main.tagArticles', { page:1,searchstr: $scope.formData.searchString });
+
     $scope.paginate(tagName, 0, $scope.itemsPerPage);
       }else{
       $scope.pagination.currentPage=1;

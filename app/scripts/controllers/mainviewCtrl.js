@@ -99,20 +99,20 @@ angular.module('dietBlog')
       }
     };
     $scope.goToCategories = function(categoryId) {
-      $state.go('main.categories', { id: categoryId });
+      $state.go('main.categories', { id: categoryId,page:1 });
 
     };
     $scope.goToTags = function() {
       $state.go('main.tags');
     };
     $scope.getTagArticles = function(tagName) {
-      $state.go('main.tagArticles', { tagName: tagName });
+      $state.go('main.tagArticles', { tagName: tagName,page:1 });
     }
     $scope.loadBlogDetails = function(pic) {
       $state.go('main.blogDetails', { id: pic.id });
     };
     $scope.gotoSearchView = function(searchStr) {
       console.log(searchStr);
-      $state.go('main.search', { searchStr: searchStr });
+      $state.go('main.search', { searchStr: searchStr,page:1 });
     };
   }]);
