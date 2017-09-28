@@ -4,7 +4,7 @@
     <div>
       <ul angular-grid="tagArticlesData" ag-grid-width="300" ag-gutter-size="12" ag-id="tagArticles" ag-refresh-on-img-load="true">
         <li dir-paginate="pic in tagArticlesData | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="pagination.currentPage" total-items=totalItems>
-          <img ng-src="{{pic.images[0]}}" class="grid-img img-responsive" style="margin-bottom:20px;" />
+          <img ng-src="{{pic.images[0]}}" src="images/16.jpg" class="grid-img img-responsive" style="margin-bottom:20px;" />
           <h2><a style="color:black;">{{pic.title}}</a></h2>
           <ul class="below-blog-list">
             <li>

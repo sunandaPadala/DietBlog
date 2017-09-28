@@ -3,15 +3,15 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   $scope.categoryData = categoryArticles.data.tips;
   // $scope.currentPage = 1;
   $scope.pagination = {
-      currentPage:  $state.params.page
-    };
+    currentPage: $state.params.page
+  };
   $scope.itemsPerPage = configSettings.itemsPerPage;
   $scope.formData = {};
-  if($state.params.searchstr.trim()!==''){
-  $scope.issearch = true;
-  $scope.formData.searchString=$state.params.searchstr;
-  }else{
-  $scope.issearch = false;
+  if ($state.params.searchstr.trim() !== '') {
+    $scope.issearch = true;
+    $scope.formData.searchString = $state.params.searchstr;
+  } else {
+    $scope.issearch = false;
   }
   $scope.noResults = false;
   $scope.totalItems = categoryArticles.data.totalCount;
@@ -33,11 +33,11 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   $scope.pageChangeHandler = function(nmbr) {
     // $scope.currentPage = nmbr;
     if ($scope.issearch) {
-      $state.go('main.categories', { searchstr: $scope.formData.searchString,page:nmbr });
+      $state.go('main.categories', { searchstr: $scope.formData.searchString, page: nmbr });
 
       $scope.search($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)));
     } else {
-      $state.go('main.categories', { page:nmbr,searchstr: $scope.formData.searchString});
+      $state.go('main.categories', { page: nmbr, searchstr: $scope.formData.searchString });
 
       $scope.paginate(categoryId, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
     }
@@ -47,67 +47,68 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   $scope.getIdForShare = function(getId) {
     $scope.shareUrl = configSettings.baseUrl + 'blogDetails/' + getId.id;
   };
-  $scope.search = function(limit, skip,fromUser) {
+  $scope.search = function(limit, skip, fromUser) {
+    $scope.noResults = false;
     var searchText = $scope.formData.searchString;
     var pageLimit = limit >= 0 ? limit : configSettings.itemsPerPage;
     var pageSkip = skip >= 0 ? skip : 0;
     $scope.issearch = true;
 
-    if(fromUser){
-      if($scope.pagination.currentPage==1){
-        $state.go('main.categories', { searchstr: $scope.formData.searchString,page:1 });
+    if (fromUser) {
+      if ($scope.pagination.currentPage == 1) {
+        $state.go('main.categories', { searchstr: $scope.formData.searchString, page: 1 });
 
-           categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
-            $scope.categoryData = response.data.tips;
-            $scope.totalItems = response.data.totalCount;
-            if (angularGridInstance.category) {
-              angularGridInstance.category.refresh();
-            }
-
-            if ($scope.categoryData.length <= 0) {
-              $scope.noResults = true;
-            } else {
-              angularGridInstance.category.refresh();
-            }
-          }, function(error) {
-            console.log(error);
-          });
-
-      }else{
-          $scope.pagination.currentPage=1;
-      }
-    }else{
         categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
-            $scope.categoryData = response.data.tips;
-            $scope.totalItems = response.data.totalCount;
-            if (angularGridInstance.category) {
-              angularGridInstance.category.refresh();
-            }
+          $scope.categoryData = response.data.tips;
+          $scope.totalItems = response.data.totalCount;
+          if (angularGridInstance.category) {
+            angularGridInstance.category.refresh();
+          }
 
-            if ($scope.categoryData.length <= 0) {
-              $scope.noResults = true;
-            } else {
-              angularGridInstance.category.refresh();
-            }
-          }, function(error) {
-            console.log(error);
-          });
+          if ($scope.categoryData.length <= 0) {
+            $scope.noResults = true;
+          } else {
+            angularGridInstance.category.refresh();
+          }
+        }, function(error) {
+          console.log(error);
+        });
+
+      } else {
+        $scope.pagination.currentPage = 1;
+      }
+    } else {
+      categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
+        $scope.categoryData = response.data.tips;
+        $scope.totalItems = response.data.totalCount;
+        if (angularGridInstance.category) {
+          angularGridInstance.category.refresh();
+        }
+
+        if ($scope.categoryData.length <= 0) {
+          $scope.noResults = true;
+        } else {
+          angularGridInstance.category.refresh();
+        }
+      }, function(error) {
+        console.log(error);
+      });
     }
-   
+
 
   };
   $scope.cancel = function() {
     $scope.formData.searchString = '';
     $scope.issearch = false;
     $scope.noResults = false;
-    if($scope.pagination.currentPage==1){
-       // $scope.paginate($scope.itemsPerPage, 0);
-        $state.go('main.categories', { searchstr: $scope.formData.searchString,page:1 });
-        $scope.paginate(categoryId, 0, $scope.itemsPerPage);
+    if ($scope.pagination.currentPage == 1) {
+      // $scope.paginate($scope.itemsPerPage, 0);
+      $state.go('main.categories', { searchstr: $scope.formData.searchString, page: 1 });
+      $scope.paginate(categoryId, 0, $scope.itemsPerPage);
 
-      }else{
-      $scope.pagination.currentPage=1;
-      }
+    } else {
+      $scope.pagination.currentPage = 1;
+    }
   };
 
 }]);
