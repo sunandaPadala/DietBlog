@@ -3,9 +3,11 @@
     <uib-accordion close-others=true>
       <div ng-repeat="letter in alphabet">
         <div ng-if="(tagsList | firstLetter:letter).length">
-          <div uib-accordion-group class="panel-default" style="margin:10px;" ng-init="status.open = $first" is-open="status.open">
+          <div uib-accordion-group class="panel-default" style="margin:10px;" ng-init="status.open = $first" is-open="status.open" ng-class="{'border-active': status.open}">
             <uib-accordion-heading>
-              <span style="text-transform: uppercase;"> {{letter}}</span> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+              <div ng-class="{'tag-active': status.open, 'tag-normal': !status.open}" style="padding:10px;">
+                <span style="text-transform: uppercase;"> {{letter}}</span> <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}" style="font-size: 20px;"></i>
+              </div>
             </uib-accordion-heading>
             <a href="javascript:void(0)" class="btn" ng-repeat="tag in tagsList|firstLetter:letter" ng-click="getTagArticles(tag.name)">{{tag.name}}({{tag.count}}) </a>
           </div>
