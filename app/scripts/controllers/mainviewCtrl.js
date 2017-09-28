@@ -102,6 +102,10 @@ angular.module('dietBlog')
       $state.go('main.categories', { id: categoryId,page:1 });
 
     };
+    $scope.goToFirstCategory=function(){
+      $state.go('main.categories', { id: $scope.categories[0].id,page:1 });
+     // console.log("categories",$scope.categories); 
+    };
     $scope.goToTags = function() {
       $state.go('main.tags');
     };
