@@ -1,17 +1,17 @@
 'use strict';
 angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles', 'tagsService', 'angularGridInstance', '$state', 'configSettings', function($scope, tagArticles, tagsService, angularGridInstance, $state, configSettings) {
   $scope.tagArticlesData = tagArticles.data.tips;
- $scope.pagination = {
-      currentPage:  $state.params.page
-    };
+  $scope.pagination = {
+    currentPage: $state.params.page
+  };
   $scope.itemsPerPage = configSettings.itemsPerPage;
-   $scope.formData = {};
+  $scope.formData = {};
   // $scope.issearch = false;
- if($state.params.searchstr.trim()!==''){
-  $scope.issearch = true;
-  $scope.formData.searchString=$state.params.searchstr;
-  }else{
-  $scope.issearch = false;
+  if ($state.params.searchstr.trim() !== '') {
+    $scope.issearch = true;
+    $scope.formData.searchString = $state.params.searchstr;
+  } else {
+    $scope.issearch = false;
   }
   $scope.noResults = false;
   $scope.totalItems = tagArticles.data.totalCount;
@@ -33,11 +33,11 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   $scope.pageChangeHandler = function(nmbr) {
     // $scope.currentPage = nmbr;
     if ($scope.issearch) {
-        $state.go('main.tagArticles', { page:nmbr,searchstr: $scope.formData.searchString });
+      $state.go('main.tagArticles', { page: nmbr, searchstr: $scope.formData.searchString });
 
       $scope.search($scope.itemsPerPage, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)));
     } else {
-        $state.go('main.tagArticles', { page:nmbr,searchstr: $scope.formData.searchString });
+      $state.go('main.tagArticles', { page: nmbr, searchstr: $scope.formData.searchString });
 
       $scope.paginate(tagName, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
     }
@@ -47,7 +47,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   $scope.getIdForShare = function(getId) {
     $scope.shareUrl = configSettings.baseUrl + 'blogDetails/' + getId.id;
   };
-  $scope.search = function(limit, skip,fromUser) {
+  $scope.search = function(limit, skip, fromUser) {
     var searchText = $scope.formData.searchString;
     var pageLimit = limit >= 0 ? limit : configSettings.itemsPerPage;
     var pageSkip = skip >= 0 ? skip : 0;
@@ -55,45 +55,46 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     //   $scope.currentPage = 1;
     // }
     $scope.issearch = true;
-    if(fromUser){
-       if($scope.pagination.currentPage==1){
-        $state.go('main.tagArticles', { page:1,searchstr: $scope.formData.searchString });
-          tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
-              $scope.tagArticlesData = response.data.tips;
-              $scope.totalItems = response.data.totalCount;
-              if (angularGridInstance.tagArticles) {
-                angularGridInstance.tagArticles.refresh();
-              }
+    $scope.noResults = false;
+    if (fromUser) {
+      if ($scope.pagination.currentPage == 1) {
+        $state.go('main.tagArticles', { page: 1, searchstr: $scope.formData.searchString });
+        tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
+          $scope.tagArticlesData = response.data.tips;
+          $scope.totalItems = response.data.totalCount;
+          if (angularGridInstance.tagArticles) {
+            angularGridInstance.tagArticles.refresh();
+          }
 
-              if ($scope.tagArticlesData.length <= 0) {
-                $scope.noResults = true;
-              } else {
-                angularGridInstance.tagArticles.refresh();
-              }
-            }, function(error) {
-              console.log(error);
-            });
-       }else{
-            $scope.pagination.currentPage=1;
-       }
-    }else{
-           tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
-              $scope.tagArticlesData = response.data.tips;
-              $scope.totalItems = response.data.totalCount;
-              if (angularGridInstance.tagArticles) {
-                angularGridInstance.tagArticles.refresh();
-              }
+          if ($scope.tagArticlesData.length <= 0) {
+            $scope.noResults = true;
+          } else {
+            angularGridInstance.tagArticles.refresh();
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      } else {
+        $scope.pagination.currentPage = 1;
+      }
+    } else {
+      tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
+        $scope.tagArticlesData = response.data.tips;
+        $scope.totalItems = response.data.totalCount;
+        if (angularGridInstance.tagArticles) {
+          angularGridInstance.tagArticles.refresh();
+        }
 
-              if ($scope.tagArticlesData.length <= 0) {
-                $scope.noResults = true;
-              } else {
-                angularGridInstance.tagArticles.refresh();
-              }
-            }, function(error) {
-              console.log(error);
-            });
+        if ($scope.tagArticlesData.length <= 0) {
+          $scope.noResults = true;
+        } else {
+          angularGridInstance.tagArticles.refresh();
+        }
+      }, function(error) {
+        console.log(error);
+      });
     }
-    
+
 
 
   };
@@ -101,13 +102,13 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     $scope.formData.searchString = '';
     $scope.issearch = false;
     $scope.noResults = false;
-    if($scope.pagination.currentPage==1){
-        $state.go('main.tagArticles', { page:1,searchstr: $scope.formData.searchString });
+    if ($scope.pagination.currentPage == 1) {
+      $state.go('main.tagArticles', { page: 1, searchstr: $scope.formData.searchString });
 
-    $scope.paginate(tagName, 0, $scope.itemsPerPage);
-      }else{
-      $scope.pagination.currentPage=1;
-      }
+      $scope.paginate(tagName, 0, $scope.itemsPerPage);
+    } else {
+      $scope.pagination.currentPage = 1;
+    }
   };
 
 }]);

@@ -4,7 +4,7 @@
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding">
         <!-- Blog Post Begins -->
         <article class="outer-blog-box pr">
-          <div class="blog-img blog-media"><img ng-src={{details.images[0]}} alt="images"></div>
+          <div class="blog-img blog-media"><img ng-src={{details.images[0]}} src="images/16.jpg" alt="images"></div>
           <div class="blog-captions">
             <h2 class="blog-title"> <a href="javascript:void(0)">{{details.title}}</a> </h2>
             <ul class="below-blog-list">
@@ -23,7 +23,6 @@
             </ul>
             <div ng-bind-html="details.description">
             </div>
-            
           </div>
         </article>
         <!-- Blog Post Ends -->
@@ -61,9 +60,7 @@
                 <h3>{{comment.commented_by.name}}</h3>
                 <h5>January 10, 2017 at 10:46 am</h5>
                 <p>{{comment.commentText}}</p>
-               
               </div>
-             
             </div>
             <!-- <div class="blog-comment">
               <a class="comment-avtar"><img src="" alt="image"></a>
@@ -103,7 +100,7 @@
               </div>
             </div>
           </form>
-        <!--   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+          <!--   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
             <h5 class="user-loggedin">You must be <a href="javascript:void(0)">logged in</a> to post a comment.</h5>
           </div> -->
         </div>
