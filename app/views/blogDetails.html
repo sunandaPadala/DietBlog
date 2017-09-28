@@ -23,28 +23,7 @@
             </ul>
             <div ng-bind-html="details.description">
             </div>
-            <!-- <p>Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the majity have suffered alteration in some form by injected andomised rds which don't look even slightly believable If you are going.
-              <br> to use a passage of Lorem Ipsum, you need to be sure there All the Lorem Ipsum generators on the Internet tend to repeat predefined</p>
-            <p>chunks as necessary, making this the first true gener It uses a dictionary of over repeat predefined chunks as necessary generators on the Internet tend to repeat predefined chunks</p>
-            <p>Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-            <p>by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures.</p>
-            <ul>
-              <li>Need to be sure there isn't anything embarrassing hidden in the middle of text.</li>
-              <li>All the Lorem Ipsum generators on the Internet tend to repeat.</li>
-              <li>Predefined chunks as necessary, making this the first true generator on the Internet.</li>
-              <li>Uses a dictionary of over 200 Latin words, combined with a handful of model sentenc.</li>
-              <li>Therefore always free from repetition, injected humour, or non-characteristic.</li>
-            </ul>
-            <div class="detail-texts">
-              <p>Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the majity have suffered alteration in some form by injected andomised rds which don't look even slightly believable If you are going.
-                <br> to use a passage of Lorem Ipsum, you need to be sure there All the Lorem Ipsum generators on the Internet tend to repeat predefined</p>
-              <p>chunks as necessary, making this the first true gener It uses a dictionary of over repeat predefined chunks as necessary generators on the Internet tend to repeat predefined chunks</p>
-              <p> Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. </p>
-            </div>
-            <blockquote>
-              <p>Passages of Lorem Ipsum available, but the majority have suffered alteration in some form by injected humour, or randomised words which don't look even slightly believable If you are going to use a passage.</p>
-              <h5> Mary Fernandez </h5>
-            </blockquote> -->
+            
           </div>
         </article>
         <!-- Blog Post Ends -->
@@ -75,43 +54,27 @@
         <!-- Blog Comments Begins -->
         <div class="blog-comments">
           <div class="blog-comment-main">
-            <h3>4 Comments</h3>
-            <div class="blog-comment">
+            <h3>{{comments.length}} Comments</h3>
+            <div class="blog-comment" ng-repeat="comment in comments">
               <a class="comment-avtar"><img src="" alt="image"></a>
               <div class="comment-text">
-                <h3>Samantha Stevens</h3>
+                <h3>{{comment.commented_by.name}}</h3>
                 <h5>January 10, 2017 at 10:46 am</h5>
-                <p>Passage of Lorem Ipsum of passages of Lorem Ipsum available, but the m injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the!</p>
-                <a href="javascript:void(0)" class="comment-reply"> Reply <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+                <p>{{comment.commentText}}</p>
+               
               </div>
-              <div class="blog-comment clearfix">
-                <a class="comment-avtar"><img src="" alt="image"></a>
-                <div class="comment-text">
-                  <h3>Patrick Smith</h3>
-                  <h5>January 10, 2017 at 10:46 am</h5>
-                  <p>Saage of Lorem Ipsum of passages injected humour, or randomised words which don't look even slightly believable. If you are going!</p>
-                  <a href="javascript:void(0)" class="comment-reply"> Reply <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
-                </div>
-              </div>
+             
             </div>
-            <div class="blog-comment">
+            <!-- <div class="blog-comment">
               <a class="comment-avtar"><img src="" alt="image"></a>
               <div class="comment-text">
                 <h3>Samantha Stevens</h3>
                 <h5>January 10, 2017 at 10:46 am</h5>
                 <p>Assage of Lorem Ipsum of passages of Lorem Ipsum available, injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything hidden in the middle of text!</p>
-                <a href="javascript:void(0)" class="comment-reply"> Reply <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+             
               </div>
-              <div class="blog-comment clearfix">
-                <a class="comment-avtar"><img src="" alt="image"></a>
-                <div class="comment-text">
-                  <h3>Patrick Smith</h3>
-                  <h5>January 10, 2017 at 10:46 am</h5>
-                  <p>Injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum!</p>
-                  <a href="javascript:void(0)" class="comment-reply"> Reply <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
-                </div>
-              </div>
-            </div>
+             
+            </div> -->
           </div>
         </div>
         <!-- Blog Comments Ends -->
@@ -140,9 +103,9 @@
               </div>
             </div>
           </form>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+        <!--   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
             <h5 class="user-loggedin">You must be <a href="javascript:void(0)">logged in</a> to post a comment.</h5>
-          </div>
+          </div> -->
         </div>
         <!-- Blog Contact Form Ends -->
       </div>
