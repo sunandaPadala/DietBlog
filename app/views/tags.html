@@ -1,21 +1,91 @@
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 75px;">
-  <uib-accordion close-others="oneAtATime">
-    <!-- <div uib-accordion-group class="panel-default" ng-repeat="tag in tagsList" is-open="tag.open">
-      <uib-accordion-heading>
-        <p ng-click="getTagArticles(tag.name)">{{tag.name}}</p> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': tag.open, 'glyphicon-chevron-right': !tag.open}"></i>
-      </uib-accordion-heading>
-      <p ng-click="getTagArticles(tag.name)">{{tag.name}}</p>
-    </div> -->
-    <div ng-repeat="letter in alphabet">
-        <div ng-show="(tagsList | firstLetter:letter).length">
-             <div uib-accordion-group class="panel-default" is-open="tag.open">
-              <uib-accordion-heading>
-                <p> {{letter}}</p> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': tag.open, 'glyphicon-chevron-right': !tag.open}"></i>
-              </uib-accordion-heading>
-              <p ng-click="getTagArticles(tag.name)" ng-repeat="tag in tagsList|firstLetter:letter">{{tag.name}}</p>
-            </div>
+<div class="container" style="padding-top:75px;">
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <uib-accordion close-others=true>
+      <div ng-repeat="letter in alphabet">
+        <div ng-if="(tagsList | firstLetter:letter).length">
+          <div uib-accordion-group class="panel-default" style="margin:10px;" ng-init="status.open = $first" is-open="status.open" ng-class="{'border-active': status.open}">
+            <uib-accordion-heading>
+              <div ng-class="{'tag-active': status.open, 'tag-normal': !status.open}" style="padding:10px;">
+                <span style="text-transform: uppercase;"> {{letter}}</span> <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}" style="font-size: 20px;"></i>
+              </div>
+            </uib-accordion-heading>
+            <a href="javascript:void(0)" class="btn" ng-repeat="tag in tagsList|firstLetter:letter" ng-click="getTagArticles(tag.name)">{{tag.name}}({{tag.count}}) </a>
+          </div>
         </div>
-     
+      </div>
+    </uib-accordion>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <div class="sidebar pad-bottom-small">
+      <!-- Search Form Widget Begins -->
+      <div class="widget widget_search">
+        <h2 class="widget-title">Search</h2>
+        <form>
+          <input type="text" ng-model="searchStr" ng-keydown="$event.keyCode === 13 && gotoSearchView(searchStr)">
+          <button type="button" class="search-submit" ng-click="gotoSearchView(searchStr)"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <!-- Search Form Widget Ends -->
+      <!-- About Widget Begins -->
+      <div class="widget widget_about">
+        <h2 class="widget-title">About Me</h2>
+        <div class="about-box">
+          <div class="about-img"> <img ng-src="" alt="images"> </div>
+          <div class="about-info">
+            <p>Suffered alteration in some passage of Lorem.</p>
+            <ul class="social">
+              <li>
+                <a href="javascript:void(0)"> <i class="fa fa-facebook"></i> </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> <i class="fa fa-twitter"></i> </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> <i class="fa fa-google-plus"></i> </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> <i class="fa fa-linkedin"></i> </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> <i class="fa fa-youtube"></i> </a>
+              </li>
+            </ul>
+            <a href="javascript:void(0)" class="continue-read">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- About Widget Ends -->
+      <!-- Recent Entry Widget Begins -->
+      <div class="widget widget_recent_entries">
+        <h2 class="widget-title">Recent Posts</h2>
+        <div class="recent-box" ng-repeat="post in recentPosts">
+          <div class="recent-img"> <img ng-src="{{post.images[0]}}" alt="images"> </div>
+          <div class="about-info recent-info">
+            <h4> <a href="javascript:void(0)">{{post.title}}</a> </h4>
+            <h5>{{post.createdAt|date:"MMMM dd, y"}}</h5>
+          </div>
+        </div>
+      </div>
+      <!-- Recent Entry Widget Ends -->
+      <!-- Categories Widget Begins -->
+      <div class="widget widget_categories">
+        <h2 class="widget-title">Categories</h2>
+        <ul>
+          <li ng-repeat="category in categories" ng-click="goToCategories(category.id)"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
+        </ul>
+      </div>
+      <!-- Categories Widget Ends -->
+      <!-- Tag Cloud Widget Begins -->
+      <div class="widget widget_tag_cloud">
+        <h2 class="widget-title">Popular Tag</h2>
+        <div class="popular-box">
+          <ul>
+            <li ng-repeat="tag in tags |  limitTo: 4" ng-click="getTagArticles(tag.name)"> <a href="javascript:void(0)">{{tag.name||'no name'}}</a> </li>
+          </ul>
+        </div>
+        <a href="javascript:void(0)" class="btn" ng-click="goToTags()"> Read More  <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+      </div>
+      <!-- Tag Cloud Widget Ends -->
     </div>
-  </uib-accordion>
+  </div>
 </div>

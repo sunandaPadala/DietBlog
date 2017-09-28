@@ -23,6 +23,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* ****************** PopUp css **************** */
 
 .popup-main {
@@ -115,6 +127,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* ****************** End of PopUp css *********** */
 
 .loadingIndicator {
@@ -130,4 +154,28 @@
 
 .menuActive {
   color: #a1cc3b !important;
+}
+
+.tag-active {
+  background-color: #a1cc3b !important;
+  color: white;
+}
+
+.tag-normal {
+  background-color: #B9B9B9;
+  color: white;
+}
+
+.border-active {
+  border-color: #a1cc3b !important;
+}
+
+.panel-default>.panel-heading {
+  /* color: #333; */
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.panel-heading {
+  padding: 0px;
 }

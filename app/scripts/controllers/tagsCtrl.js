@@ -3,6 +3,7 @@ angular.module('dietBlog').controller('tagsCtrl', ['$scope', 'tagsList', 'tagsSe
   $scope.tagsList = tagsList.data;
 
   $scope.alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+
   $scope.getTagArticles = function(tagName) {
     $state.go('main.tagArticles', { tagName: tagName });
   };
