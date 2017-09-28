@@ -26,7 +26,7 @@ angular
   ]).constant('configSettings', {
     'baseUrl': 'https://right-my-diet.herokuapp.com/',
     'someElseSetting': 'settingValue',
-    'itemsPerPage': 4
+    'itemsPerPage': 1
     //other setting will also be there.
   }).config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $httpProvider.interceptors.push('LoadingInterceptor');
@@ -93,16 +93,16 @@ angular
           itemsPerPage: 4
         },
         resolve: {
-          gridData: ['blogService', '$stateParams', '$q', function(blogService, $stateParams, $q) {
+          gridData: ['blogService', '$stateParams', '$q','configSettings', function(blogService, $stateParams, $q,configSettings) {
             var deferred = $q.defer();
-            blogService.getBlogs($stateParams.itemsPerPage, ($stateParams.itemsPerPage * ($stateParams.page - 1)))
+            blogService.getBlogs(configSettings.itemsPerPage, (configSettings.itemsPerPage * ($stateParams.page - 1)))
               .then(function(response) {
                 var reqObj = {};
                 if (response.tips.length) {
                   response['currentPage'] = $stateParams.page;
                   deferred.resolve(response);
                 } else {
-                  blogService.getBlogs($stateParams.itemsPerPage, ($stateParams.itemsPerPage * (1 - 1))).then(function(response) {
+                  blogService.getBlogs(configSettings.itemsPerPage, (configSettings.itemsPerPage * (1 - 1))).then(function(response) {
                     response['currentPage'] = 1;
                     deferred.resolve(response);
                   }, function(error) {
@@ -127,13 +127,28 @@ angular
           }]
         }
       }).state('main.categories', {
-        url: '/categories/:id',
+        url: '/categories/:id/:page/:searchstr',
         templateUrl: "views/categories.html",
         controller: "categoriesCtrl",
         resolve: {
           categoryArticles: ['categoryService', '$stateParams', 'configSettings', function(categoryService, $stateParams, configSettings) {
-            return categoryService.getArticlesByCategory($stateParams.id, 0, configSettings.itemsPerPage);
+            if($stateParams.page && $stateParams.searchstr){
+              return categoryService.categoryArticlesSearch($stateParams.id, $stateParams.searchstr, (configSettings.itemsPerPage * ($stateParams.page  - 1)), configSettings.itemsPerPage);
+            }else{
+              return categoryService.getArticlesByCategory($stateParams.id, (configSettings.itemsPerPage * ($stateParams.page  - 1)), configSettings.itemsPerPage);
+            }
           }]
+        },
+        params: {
+          page: {
+            dynamic: true,
+            value: 1,
+            type: "int"
+          },
+          searchstr:{
+             dynamic: true,
+             value:''
+          }
         }
       }).state('main.tags', {
         url: '/tags',
@@ -145,13 +160,29 @@ angular
           }]
         }
       }).state('main.tagArticles', {
-        url: '/tagArticles/:tagName',
+        url: '/tagArticles/:tagName/:page/:searchstr',
         templateUrl: "views/tagArticles.html",
         controller: "tagArticlesCtrl",
         resolve: {
           tagArticles: ['tagsService', '$stateParams', 'configSettings', function(tagsService, $stateParams, configSettings) {
-            return tagsService.getArticlesOfTag($stateParams.tagName, 0, configSettings.itemsPerPage);
+            if($stateParams.page && $stateParams.searchstr){
+              return tagsService.getArticlesOfTag($stateParams.tagName, (configSettings.itemsPerPage * ($stateParams.page  - 1)), configSettings.itemsPerPage,$stateParams.searchstr);
+            }else{
+            return tagsService.getArticlesOfTag($stateParams.tagName, (configSettings.itemsPerPage * ($stateParams.page  - 1)), configSettings.itemsPerPage);
+
+            }
           }]
+        },
+        params: {
+          page: {
+            dynamic: true,
+            value: 1,
+            type: "int"
+          },
+          searchstr:{
+             dynamic: true,
+             value:''
+          }
         }
       }).state('main.contact', {
         url: '/contact',
@@ -161,12 +192,23 @@ angular
         templateUrl: "views/doctorsGrid.html",
         controller: 'doctorsCtrl'
       }).state('main.search', {
-        url: '/search/:searchStr',
+        url: '/search/:page/:searchStr',
         templateUrl: "views/searchView.html",
         controller: 'searchViewCtrl',
+         params: {
+          page: {
+            dynamic: true,
+            value: 1,
+            type: "int"
+          },
+          searchStr:{
+             dynamic: true
+          }
+          //itemsPerPage: 4
+        },
         resolve: {
-          searchData: ['blogService', '$stateParams', 'configSettings', function(blogService, $stateParams, configSettings) {
-            return blogService.articlesSearch($stateParams.searchStr, configSettings.itemsPerPage, 0);
+          searchData: ['blogService', '$stateParams', 'configSettings','$q', function(blogService, $stateParams, configSettings,$q) {
+            return blogService.articlesSearch($stateParams.searchStr, configSettings.itemsPerPage, configSettings.itemsPerPage * ($stateParams.page - 1));
           }]
         }
       });
@@ -200,6 +242,11 @@ angular.module('dietBlog').service('LoadingInterceptor', ['$q', '$rootScope', '$
     };
   }
 ]);
-angular.module('dietBlog').run(function($rootScope, $location) {
+angular.module('dietBlog').run(function($rootScope, $location,$state) {
   $rootScope.location = $location;
+  $state.defaultErrorHandler(function(error) {
+    // This is a naive example of how to silence the default error handler.
+    console.log("state change failed navigating to home page");
+     $state.go('main.blog', { page: 1 });
+  });
 });

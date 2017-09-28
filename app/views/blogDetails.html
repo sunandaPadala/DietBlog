@@ -181,7 +181,7 @@
                     <a href="javascript:void(0)"> <i class="fa fa-youtube"></i> </a>
                   </li>
                 </ul>
-                <a href="javascript:void(0)" class="continue-read">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <a href="javascript:void(0)" ui-sref="main.about" class="continue-read">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
@@ -202,7 +202,7 @@
           <div class="widget widget_categories">
             <h2 class="widget-title">Categories</h2>
             <ul>
-              <li ng-repeat="category in categories"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
+              <li ng-repeat="category in categories" ng-click="goToCategories(category.id)"> <a href="javascript:void(0)">{{category.name||'no name'}}</a> </li>
               <!--  <li> <a href="javascript:void(0)">Category #2</a> </li>
         <li> <a href="javascript:void(0)">Category #3</a> </li>
         <li> <a href="javascript:void(0)">Category #4</a> </li> -->
