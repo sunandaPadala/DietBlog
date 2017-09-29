@@ -1,6 +1,5 @@
 <div class="container" style="padding-top:75px;">
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-    <div ng-if="noResults">No results were found for the search string "<b>{{formData.searchString}}</b>"</div>
     <div>
       <ul angular-grid="doctorsList" ag-grid-width="300" ag-gutter-size="12" ag-id="category" ag-refresh-on-img-load="true">
         <li dir-paginate="pic in doctorsList | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="currentPage" total-items=totalItems>
@@ -8,10 +7,10 @@
           <h2><a style="color:black;">{{pic.title}}</a></h2>
           <ul class="below-blog-list" style="margin:0px;">
             <li>
-              <a href="javascript:void(0)"> M.sc Dietetics & Nutrition</a>
+              <a href="javascript:void(0)" class="no-pointer"> M.sc Dietetics & Nutrition</a>
             </li>
             <li>
-              <a href="javascript:void(0)" style="color:black;"> DutyDoctor-Dietitian, Kamineni Hospitals, Hyderabad</a>
+              <a href="javascript:void(0)" style="color:black;" class="no-pointer"> DutyDoctor-Dietitian, Kamineni Hospitals, Hyderabad</a>
             </li>
           </ul>
           <p ng-bind-html="pic.description"></p>
@@ -35,7 +34,7 @@
       <div class="widget widget_about">
         <h2 class="widget-title">About Me</h2>
         <div class="about-box">
-          <div class="about-img"> <img ng-src="" alt="images"> </div>
+          <div class="about-img"> <img src="images/doctor1.png" alt="images"> </div>
           <div class="about-info">
             <p>Suffered alteration in some passage of Lorem.</p>
             <ul class="social">
@@ -64,7 +63,7 @@
       <div class="widget widget_recent_entries">
         <h2 class="widget-title">Recent Posts</h2>
         <div class="recent-box" ng-repeat="post in recentPosts">
-          <div class="recent-img"> <img ng-src="{{post.images[0]}}" alt="images"> </div>
+          <div class="recent-img"> <img ng-src="{{post.images[0]}}" src="images/16.jpg" alt="images"> </div>
           <div class="about-info recent-info">
             <h4> <a href="javascript:void(0)" ui-sref="main.blogDetails({id:post.id})">{{post.title}}</a> </h4>
             <h5>{{post.createdAt|date:"MMMM dd, y"}}</h5>
