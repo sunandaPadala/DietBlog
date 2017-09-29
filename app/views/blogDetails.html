@@ -20,6 +20,12 @@
               <li>
                 <a href="javascript:void(0)"> <i class="fa fa-heart-o" aria-hidden="true"></i> Lifestyle </a>
               </li>
+              <!--  <li>
+                <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-circle-o" aria-hidden="true"></i> Category:{{details.category}} </a>
+              </li>
+              <li ng-if="details.tags.length>0">
+                <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-tags" aria-hidden="true"></i> Tags : <span ng-repeat="tag in pdetails.tags | limitTo:2" ng-click="getTagArticles(tag)" style="cursor:pointer;"> {{tag}}</span> </a>
+              </li> -->
             </ul>
             <div ng-bind-html="details.description">
             </div>

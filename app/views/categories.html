@@ -7,15 +7,23 @@
         <li dir-paginate="pic in categoryData | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="pagination.currentPage" total-items=totalItems>
           <img ng-src="{{pic.images[0]}}" src="images/16.jpg" class="grid-img img-responsive" style="margin-bottom:20px;" />
           <h2><a style="color:black;">{{pic.title}}</a></h2>
-          <ul class="below-blog-list">
+          <ul class="below-blog-list" style="margin-bottom:0px;">
             <li>
-              <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
+              <a href="javascript:void(0) " class="no-pointer "> <i class="fa fa-user-o " aria-hidden="true "></i> Dany Saha </a>
             </li>
             <li>
-              <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-calendar-o" aria-hidden="true"></i> {{pic.createdAt|date: "MMMM d, y"}} </a>
+              <a href="javascript:void(0) " class="no-pointer "> <i class="fa fa-calendar-o " aria-hidden="true "></i> {{pic.createdAt|date: "MMMM d, y "}} </a>
             </li>
             <li>
-              <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-comment-o" aria-hidden="true"></i> {{pic.comments.length}} Comment </a>
+              <a href="javascript:void(0) " class="no-pointer "> <i class="fa fa-comment-o " aria-hidden="true "></i> {{pic.comments.length}} Comment </a>
+            </li>
+          </ul>
+          <ul class="below-blog-list " style="margin:0px;margin-bottom:10px; ">
+            <li>
+              <a href="javascript:void(0) " class="no-pointer "> <i class="fa fa-circle-o " aria-hidden="true "></i> Category:{{pic.category}} </a>
+            </li>
+            <li ng-if="pic.tags.length>0">
+              <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-tags" aria-hidden="true"></i> Tags : <span ng-repeat="tag in pic.tags | limitTo:2" ng-click="getTagArticles(tag)" style="cursor:pointer;"> {{tag}}</span> </a>
             </li>
           </ul>
           <p ng-bind-html="pic.description" style="height:110px;overflow:hidden;"></p>
