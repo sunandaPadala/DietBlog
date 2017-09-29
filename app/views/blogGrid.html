@@ -23,7 +23,7 @@
             <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-tags" aria-hidden="true"></i> Tags : <span ng-repeat="tag in pic.tags | limitTo:2" ng-click="getTagArticles(tag)" style="cursor:pointer;"> {{tag}}</span> </a>
           </li>
         </ul>
-        <p ng-bind-html="pic.description" style="height:110px;overflow:hidden;"></p>
+        <p ng-bind-html="pic.gridDescription||pic.description" style="height:110px;overflow:hidden;"></p>
         <div class="bottom-blog">
           <a ng-click="loadBlogDetails(pic)" class="continue-read"> Continue Reading <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
           <ul class="social">
