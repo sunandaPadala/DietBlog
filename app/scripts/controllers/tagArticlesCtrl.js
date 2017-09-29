@@ -15,6 +15,9 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   }
   $scope.noResults = false;
   $scope.totalItems = tagArticles.data.totalCount;
+  if ($scope.totalItems == 0) {
+    $scope.noResults = true;
+  }
   var tagName = tagArticles.tagName;
   $scope.paginate = function(tagName, skip, limit) {
     tagsService.getArticlesOfTag(tagName, skip, limit).then(function(response) {

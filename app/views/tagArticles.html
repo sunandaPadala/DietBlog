@@ -1,7 +1,7 @@
 <div class="container" style="padding-top:75px;">
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-    <h3 ng-if="noResults" class="align-center">No articles were found for the category "<b>{{formData.searchString}}</b>"</h3>
-    <h3 ng-if="!noResults&&issearch" class="align-center">Results for the category "<b>{{formData.searchString}}</b>"</h3>
+    <h3 ng-if="noResults" class="align-center">No articles were found for the tag <b>{{formData.searchString}}</b></h3>
+    <h3 ng-if="!noResults&&issearch" class="align-center">Results for the tag <b>{{formData.searchString}}</b></h3>
     <div>
       <ul angular-grid="tagArticlesData" ag-grid-width="300" ag-gutter-size="12" ag-id="tagArticles" ag-refresh-on-img-load="true">
         <li dir-paginate="pic in tagArticlesData | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="pagination.currentPage" total-items=totalItems>
@@ -55,7 +55,7 @@
       <div class="widget widget_search">
         <h2 class="widget-title">Tags Search</h2>
         <form>
-          <input type="text" ng-model="formData.searchString" ng-keydown="$event.keyCode === 13 && search('','',true)"> {{formData.searchString}}
+          <input type="text" ng-model="formData.searchString" ng-keydown="$event.keyCode === 13 && search('','',true)">
           <button type="button" class="search-submit" ng-if="!issearch" ng-click="search('','',true)"><i class="fa fa-search"></i></button>
           <button type="button" class="search-submit" ng-if="issearch" ng-click="cancel()"><i class="fa fa-times-circle-o"></i></button>
         </form>
