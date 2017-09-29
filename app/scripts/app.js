@@ -26,7 +26,7 @@ angular
   ]).constant('configSettings', {
     'baseUrl': 'https://right-my-diet.herokuapp.com/',
     'someElseSetting': 'settingValue',
-    'itemsPerPage': 1
+    'itemsPerPage': 4
     //other setting will also be there.
   }).config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $httpProvider.interceptors.push('LoadingInterceptor');
