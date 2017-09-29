@@ -20,6 +20,12 @@
               <li>
                 <a href="javascript:void(0)"> <i class="fa fa-heart-o" aria-hidden="true"></i> Lifestyle </a>
               </li>
+              <!--  <li>
+                <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-circle-o" aria-hidden="true"></i> Category:{{details.category}} </a>
+              </li>
+              <li ng-if="details.tags.length>0">
+                <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-tags" aria-hidden="true"></i> Tags : <span ng-repeat="tag in pdetails.tags | limitTo:2" ng-click="getTagArticles(tag)" style="cursor:pointer;"> {{tag}}</span> </a>
+              </li> -->
             </ul>
             <div ng-bind-html="details.description">
             </div>
@@ -62,7 +68,6 @@
                 <p>{{comment.commentText}}</p>
               </div>
             </div>
-           
           </div>
         </div>
         <!-- Blog Comments Ends -->
@@ -112,7 +117,7 @@
           <div class="widget widget_about">
             <h2 class="widget-title">About Me</h2>
             <div class="about-box">
-              <div class="about-img"> <img src="" alt="images"> </div>
+              <div class="about-img"> <img src="images/doctor1.png" alt="images"> </div>
               <div class="about-info">
                 <p>Suffered alteration in some passage of Lorem.</p>
                 <ul class="social">
@@ -141,7 +146,7 @@
           <div class="widget widget_recent_entries">
             <h2 class="widget-title">Recent Posts</h2>
             <div class="recent-box" ng-repeat="post in recentPosts">
-              <div class="recent-img"> <img ng-src="{{post.images[0]}}" alt="images"> </div>
+              <div class="recent-img"> <img ng-src="{{post.images[0]}}" src="images/16.jpg" alt="images"> </div>
               <div class="about-info recent-info">
                 <h4> <a href="javascript:void(0)" ui-sref="main.blogDetails({id:post.id})">{{post.title}}</a> </h4>
                 <h5>{{post.createdAt|date:"MMMM dd, y"}}</h5>

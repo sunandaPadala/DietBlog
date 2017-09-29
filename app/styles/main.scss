@@ -35,6 +35,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
 /* ****************** PopUp css **************** */
 
 .popup-main {
@@ -139,6 +148,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
 /* ****************** End of PopUp css *********** */
 
 .loadingIndicator {
@@ -178,4 +196,16 @@
 
 .panel-heading {
   padding: 0px;
+}
+
+.no-pointer {
+  cursor: default;
+}
+
+.about-img img {
+  top: -9945px !important;
+}
+
+.align-center {
+  text-align: center;
 }
