@@ -6,7 +6,7 @@
         <h2><a style="color:black;">{{pic.title}}</a></h2>
         <ul class="below-blog-list" style="margin-bottom:0px;">
           <li>
-            <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-user-o" aria-hidden="true"></i> Dany Saha </a>
+            <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-user-o" aria-hidden="true"></i> {{pic.posted_by.firstName+' '+pic.posted_by.lastName}} </a>
           </li>
           <li>
             <a href="javascript:void(0)" class="no-pointer"> <i class="fa fa-calendar-o" aria-hidden="true"></i> {{pic.createdAt|date: "MMMM d, y"}} </a>
