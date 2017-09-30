@@ -15,6 +15,9 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   }
   $scope.noResults = false;
   $scope.totalItems = categoryArticles.data.totalCount;
+  if ($scope.totalItems == 0) {
+    $scope.noResults = true;
+  }
   var categoryId = categoryArticles.categoryId;
   $scope.paginate = function(categoryId, skip, limit) {
     categoryService.getArticlesByCategory(categoryId, skip, limit).then(function(response) {
