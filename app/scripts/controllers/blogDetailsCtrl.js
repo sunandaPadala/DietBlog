@@ -45,5 +45,7 @@ angular.module('dietBlog')
         });
       });
     };
-
+    $scope.loadBlogDetails = function(articleId) {
+      $state.go('main.blogDetails', { id: articleId });
+    };
   });

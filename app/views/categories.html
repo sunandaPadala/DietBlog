@@ -1,7 +1,8 @@
 <div class="container" style="padding-top:75px;">
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-    <h3 ng-if="noResults" class="align-center">No articles were found for the category <b>{{formData.searchString}}</b></h3>
-    <h3 ng-if="!noResults&&issearch" class="align-center">Results for the category <b>{{formData.searchString}}</b></h3>
+    <h2 ng-if="!issearch" class="widget-title" style="color:black;position: relative;top:-14px;margin-bottom:14px;">Articles under the category: <b>{{categoryData[0].category}}</b></h2>
+    <h3 ng-if="noResults" class="align-center">No articles were found for <b>{{formData.searchString}}</b></h3>
+    <h3 ng-if="!noResults&&issearch" class="align-center">Results for <b>{{formData.searchString}}</b></h3>
     <div>
       <ul angular-grid="categoryData" ag-grid-width="300" ag-gutter-size="12" ag-id="category" ag-refresh-on-img-load="true">
         <li dir-paginate="pic in categoryData | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="pagination.currentPage" total-items=totalItems>

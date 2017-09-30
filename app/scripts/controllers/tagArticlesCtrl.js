@@ -18,7 +18,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   if ($scope.totalItems == 0) {
     $scope.noResults = true;
   }
-  var tagName = tagArticles.tagName;
+  $scope.tagName = tagArticles.tagName;
   $scope.paginate = function(tagName, skip, limit) {
     tagsService.getArticlesOfTag(tagName, skip, limit).then(function(response) {
       $scope.totalItems = response.data.totalCount;
@@ -42,7 +42,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     } else {
       $state.go('main.tagArticles', { page: nmbr, searchstr: $scope.formData.searchString });
 
-      $scope.paginate(tagName, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
+      $scope.paginate($scope.tagName, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
     }
 
   };
@@ -62,7 +62,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     if (fromUser) {
       if ($scope.pagination.currentPage == 1) {
         $state.go('main.tagArticles', { page: 1, searchstr: $scope.formData.searchString });
-        tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
+        tagsService.getArticlesOfTag($scope.tagName, pageSkip, pageLimit, searchText).then(function(response) {
           $scope.tagArticlesData = response.data.tips;
           $scope.totalItems = response.data.totalCount;
           if (angularGridInstance.tagArticles) {
@@ -81,7 +81,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
         $scope.pagination.currentPage = 1;
       }
     } else {
-      tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
+      tagsService.getArticlesOfTag($scope.tagName, pageSkip, pageLimit, searchText).then(function(response) {
         $scope.tagArticlesData = response.data.tips;
         $scope.totalItems = response.data.totalCount;
         if (angularGridInstance.tagArticles) {
@@ -108,7 +108,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     if ($scope.pagination.currentPage == 1) {
       $state.go('main.tagArticles', { page: 1, searchstr: $scope.formData.searchString });
 
-      $scope.paginate(tagName, 0, $scope.itemsPerPage);
+      $scope.paginate($scope.tagName, 0, $scope.itemsPerPage);
     } else {
       $scope.pagination.currentPage = 1;
     }
