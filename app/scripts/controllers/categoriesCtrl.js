@@ -53,14 +53,13 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
   $scope.search = function(limit, skip, fromUser) {
     $scope.noResults = false;
     var searchText = $scope.formData.searchString;
-    var pageLimit = limit >= 0 ? limit : configSettings.itemsPerPage;
-    var pageSkip = skip >= 0 ? skip : 0;
+    var pageLimit = (limit && limit >= 0) ? limit : configSettings.itemsPerPage;
+    var pageSkip = (skip && skip >= 0) ? skip : 0;
     $scope.issearch = true;
 
     if (fromUser) {
       if ($scope.pagination.currentPage == 1) {
         $state.go('main.categories', { searchstr: $scope.formData.searchString, page: 1 });
-
         categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
           $scope.categoryData = response.data.tips;
           $scope.totalItems = response.data.totalCount;
@@ -82,6 +81,7 @@ angular.module('dietBlog').controller('categoriesCtrl', ['$scope', 'categoryArti
       }
     } else {
       categoryService.categoryArticlesSearch(categoryId, searchText, pageSkip, pageLimit).then(function(response) {
+
         $scope.categoryData = response.data.tips;
         $scope.totalItems = response.data.totalCount;
         if (angularGridInstance.category) {

@@ -52,11 +52,8 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   };
   $scope.search = function(limit, skip, fromUser) {
     var searchText = $scope.formData.searchString;
-    var pageLimit = limit >= 0 ? limit : configSettings.itemsPerPage;
-    var pageSkip = skip >= 0 ? skip : 0;
-    // if (pageSkip == 0) {
-    //   $scope.currentPage = 1;
-    // }
+    var pageLimit = (limit && limit >= 0) ? limit : configSettings.itemsPerPage;
+    var pageSkip = (skip && skip >= 0) ? skip : 0;
     $scope.issearch = true;
     $scope.noResults = false;
     if (fromUser) {
