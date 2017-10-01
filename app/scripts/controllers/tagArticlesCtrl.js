@@ -18,7 +18,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   if ($scope.totalItems == 0) {
     $scope.noResults = true;
   }
-  var tagName = tagArticles.tagName;
+  $scope.tagName = tagArticles.tagName;
   $scope.paginate = function(tagName, skip, limit) {
     tagsService.getArticlesOfTag(tagName, skip, limit).then(function(response) {
       $scope.totalItems = response.data.totalCount;
@@ -42,7 +42,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     } else {
       $state.go('main.tagArticles', { page: nmbr, searchstr: $scope.formData.searchString });
 
-      $scope.paginate(tagName, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
+      $scope.paginate($scope.tagName, ($scope.itemsPerPage * ($scope.pagination.currentPage - 1)), $scope.itemsPerPage);
     }
 
   };
@@ -52,17 +52,14 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
   };
   $scope.search = function(limit, skip, fromUser) {
     var searchText = $scope.formData.searchString;
-    var pageLimit = limit >= 0 ? limit : configSettings.itemsPerPage;
-    var pageSkip = skip >= 0 ? skip : 0;
-    // if (pageSkip == 0) {
-    //   $scope.currentPage = 1;
-    // }
+    var pageLimit = (limit && limit >= 0) ? limit : configSettings.itemsPerPage;
+    var pageSkip = (skip && skip >= 0) ? skip : 0;
     $scope.issearch = true;
     $scope.noResults = false;
     if (fromUser) {
       if ($scope.pagination.currentPage == 1) {
         $state.go('main.tagArticles', { page: 1, searchstr: $scope.formData.searchString });
-        tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
+        tagsService.getArticlesOfTag($scope.tagName, pageSkip, pageLimit, searchText).then(function(response) {
           $scope.tagArticlesData = response.data.tips;
           $scope.totalItems = response.data.totalCount;
           if (angularGridInstance.tagArticles) {
@@ -81,7 +78,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
         $scope.pagination.currentPage = 1;
       }
     } else {
-      tagsService.getArticlesOfTag(tagName, pageSkip, pageLimit, searchText).then(function(response) {
+      tagsService.getArticlesOfTag($scope.tagName, pageSkip, pageLimit, searchText).then(function(response) {
         $scope.tagArticlesData = response.data.tips;
         $scope.totalItems = response.data.totalCount;
         if (angularGridInstance.tagArticles) {
@@ -108,7 +105,7 @@ angular.module('dietBlog').controller('tagArticlesCtrl', ['$scope', 'tagArticles
     if ($scope.pagination.currentPage == 1) {
       $state.go('main.tagArticles', { page: 1, searchstr: $scope.formData.searchString });
 
-      $scope.paginate(tagName, 0, $scope.itemsPerPage);
+      $scope.paginate($scope.tagName, 0, $scope.itemsPerPage);
     } else {
       $scope.pagination.currentPage = 1;
     }

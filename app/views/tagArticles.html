@@ -1,7 +1,8 @@
 <div class="container" style="padding-top:75px;">
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-    <h3 ng-if="noResults" class="align-center">No articles were found for the tag <b>{{formData.searchString}}</b></h3>
-    <h3 ng-if="!noResults&&issearch" class="align-center">Results for the tag <b>{{formData.searchString}}</b></h3>
+    <h2 ng-if="!issearch&&!noResults" class="align-center" style="color:black;position: relative;top:-14px;margin-bottom:14px;">Articles under the tag: <b>{{tagName}}</b></h2>
+    <h3 ng-if="noResults" class="align-center">No articles were found for <b>{{formData.searchString}}</b></h3>
+    <h3 ng-if="!noResults&&issearch" class="align-center">Results for  <b>{{formData.searchString}}</b></h3>
     <div>
       <ul angular-grid="tagArticlesData" ag-grid-width="300" ag-gutter-size="12" ag-id="tagArticles" ag-refresh-on-img-load="true">
         <li dir-paginate="pic in tagArticlesData | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="pagination.currentPage" total-items=totalItems>
