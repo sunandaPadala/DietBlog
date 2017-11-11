@@ -44,6 +44,13 @@
 
 
 
+
+
+
+
+
+
+
 /* ****************** PopUp css **************** */
 
 .popup-main {
@@ -157,6 +164,13 @@
 
 
 
+
+
+
+
+
+
+
 /* ****************** End of PopUp css *********** */
 
 .loadingIndicator {
@@ -208,4 +222,31 @@
 
 .align-center {
   text-align: center;
+}
+
+.submit:hover {
+  background-color: #a1cc3b !important;
+  border-color: #f5878b !important;
+}
+
+
+
+
+
+
+
+
+/*switch css*/
+
+.switch.wider {
+  width: 90px;
+}
+
+.switch.wider.checked small {
+  left: 62px;
+}
+
+.diet-form {
+  margin-top: 15px;
+  margin-bottom: 45px;
 }

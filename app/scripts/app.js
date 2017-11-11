@@ -22,7 +22,8 @@ angular
     'ui.router',
     'angularGrid',
     '720kb.socialshare',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'uiSwitch'
   ]).constant('configSettings', {
     'baseUrl': 'https://right-my-diet.herokuapp.com/',
     'someElseSetting': 'settingValue',
@@ -213,7 +214,8 @@ angular
         }
       }).state('main.dietForm', {
         url: '/diet',
-        templateUrl: "views/dietForm.html"
+        templateUrl: "views/dietForm.html",
+        controller: 'dietFormCtrl'
       });
     $locationProvider.hashPrefix('');
 
