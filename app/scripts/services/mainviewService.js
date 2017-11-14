@@ -63,5 +63,16 @@ app.service('mainViewService', ['$q', '$http', 'configSettings', function($q, $h
       });
     return deferred.promise;
   };
+  this.bookAnAppointment = function(dataObj) {
+    var deferred = $q.defer();
+    var requrl = configSettings.baseUrl + 'user/send/dietinfo/admin';
+    $http.post(requrl, dataObj)
+      .then(function(data) {
+        deferred.resolve(data);
+      }, function(msg, code) {
+        deferred.reject(msg);
+      });
+    return deferred.promise;
+  }
 
 }]);
