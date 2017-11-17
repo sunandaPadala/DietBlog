@@ -53,7 +53,7 @@ angular.module('dietBlog').controller('dietFormCtrl', ['$scope', 'mainViewServic
         templateUrl: '../views/successModel.html',
         size: 'md',
         controller: function($scope) {
-          $scope.message = response.data.message;
+          $scope.message = error.message;
           $scope.title = "Right my diet";
           $scope.ok = function() {
             modalInstance.close();
