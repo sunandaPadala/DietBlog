@@ -25,8 +25,8 @@ angular
     'angularUtils.directives.dirPagination',
     'uiSwitch'
   ]).constant('configSettings', {
-    //'baseUrl': 'https://right-my-diet.herokuapp.com/',
-    'baseUrl': 'https://authentic-genre-184107.appspot.com/',
+    // 'baseUrl': 'https://right-my-diet.herokuapp.com/',
+    'baseUrl': 'https://right-my-diet123.appspot.com/',
     'someElseSetting': 'settingValue',
     'itemsPerPage': 4
     //other setting will also be there.

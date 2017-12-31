@@ -1556,6 +1556,13 @@ blockquote p span {
   font-weight: 600;
   margin: 6px 0 22px;
 }
+.aboutus-info ul li{
+    font-size: 18px;
+    line-height: 29px;
+    margin: 0 0 15px;
+    color: #777777;
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
 .aboutus-info p {
   margin-bottom: 40px;
@@ -1888,7 +1895,7 @@ blockquote p span {
 
 .blog-comments {
   border: 1px solid #f3f3f3;
-  padding: 28px 23px 0;
+  padding: 28px 23px 12px;
   -webkit-box-shadow: 0px 0px 20px 0px #f6f6f6;
   -moz-box-shadow: 0px 0px 20px 0px #f6f6f6;
   box-shadow: 0px 0px 20px 0px #f6f6f6;
@@ -2637,4 +2644,17 @@ ul.categ li{
 }*/
 .menu-mob ul li:hover{
   background: rgb(247, 247, 247) !important;
+}
+ul.pagination{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.below-blog-list li a.col-blk{
+  color:black;
+}
+.below-blog-list li a.col-blk:hover{
+  color: #a1cc3b;
+}
+.below-blog-list li a.text-chg{
+  text-transform:none;
+  font-size: 16px;
 }

@@ -1,4 +1,4 @@
-<div class="container" style="padding-top:75px;">
+<div class="container" style="padding-top:90px;">
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <h2 ng-if="!issearch&&!noResults" class="align-center" style="color:black;position: relative;top:-14px;margin-bottom:14px;">Articles under the tag: <b>{{tagName}}</b></h2>
     <h3 ng-if="noResults" class="align-center">No articles were found for <b>{{formData.searchString}}</b></h3>
@@ -86,7 +86,7 @@
                 <a href="javascript:void(0)"> <i class="fa fa-youtube"></i> </a>
               </li>
             </ul>
-            <a href="javascript:void(0)" ui-sref="main.about" class="continue-read">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="javascript:void(0)" ui-sref="main.about" class="continue-read"> More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@
             <li ng-repeat="tag in tags |  limitTo: 4" ng-click="getTagArticles(tag.name)"> <a href="javascript:void(0)">{{tag.name||'no name'}}</a> </li>
           </ul>
         </div>
-        <a href="javascript:void(0)" class="btn" ng-click="goToTags()"> Read More  <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+        <a href="javascript:void(0)" class="btn" ng-click="goToTags()">  More  <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
       </div>
       <!-- Tag Cloud Widget Ends -->
     </div>

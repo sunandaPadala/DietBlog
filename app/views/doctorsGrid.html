@@ -1,16 +1,16 @@
-<div class="container" style="padding-top:75px;">
+<div class="container" style="padding-top:90px;">
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <div>
       <ul angular-grid="doctorsList" ag-grid-width="300" ag-gutter-size="12" ag-id="category" ag-refresh-on-img-load="true">
         <li dir-paginate="pic in doctorsList | itemsPerPage: itemsPerPage" class="grid img-responsive" current-page="currentPage" total-items=totalItems>
           <img ng-src="{{pic.images[0]}}" src="images/16.jpg" class="grid-img img-responsive" style="margin-bottom:20px;" />
-          <h2><a style="color:black;">{{pic.title}}</a></h2>
+          <h2 class="blog-title"><a>{{pic.title}}</a></h2>
           <ul class="below-blog-list" style="margin:0px;">
             <li>
-              <a href="javascript:void(0)" class="no-pointer"> M.sc Dietetics & Nutrition</a>
+              <a href="javascript:void(0)" class="no-pointer text-chg" style="font-style: italic;"> M.sc Dietetics & Nutrition</a>
             </li>
-            <li>
-              <a href="javascript:void(0)" style="color:black;" class="no-pointer"> DutyDoctor-Dietitian, Kamineni Hospitals, Hyderabad</a>
+            <li style="margin-bottom: 10px;">
+              <a href="javascript:void(0)" class="no-pointer col-blk text-chg"> Duty Doctor-Dietitian, Kamineni Hospitals, Hyderabad</a>
             </li>
           </ul>
           <p ng-bind-html="pic.description"></p>
@@ -54,7 +54,7 @@
                 <a href="javascript:void(0)"> <i class="fa fa-youtube"></i> </a>
               </li>
             </ul>
-            <a href="javascript:void(0)" ui-sref="main.about" class="continue-read">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="javascript:void(0)" ui-sref="main.about" class="continue-read"> More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
             <li ng-repeat="tag in tags |  limitTo: 4" ng-click="getTagArticles(tag.name)"> <a href="javascript:void(0)">{{tag.name||'no name'}}</a> </li>
           </ul>
         </div>
-        <a href="javascript:void(0)" class="btn" ng-click="goToTags()"> Read More  <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+        <a href="javascript:void(0)" class="btn" ng-click="goToTags()">  More  <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
       </div>
       <!-- Tag Cloud Widget Ends -->
     </div>
