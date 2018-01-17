@@ -18,34 +18,30 @@ angular.module('dietBlog')
           $scope.commenterMail = '';
           $scope.commenterName = '';
 
-          var mess = "Comments posted successfully.You can view once admin accept the comment."
-          var modalInstance = $uibModal.open({
-            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
-            
-            // templateUrl: 'views/successModel.html',
-            size: 'md',
-            controller: function($scope) {
-              $scope.message = mess;
+          var mess = "Comments posted successfully.You can view once admin accept the comment.";
+           $scope.message = mess;
               $scope.title = "Right my diet";
-              $scope.ok = function() {
-                modalInstance.close();
-              };
-            }
+          var modalInstance = $uibModal.open({
+            // template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+            
+            templateUrl: 'views/successModel.html',
+            size: 'md',
+              scope:$scope,
+            controller: 'ModalInstanceCtrl',
+            controllerAs: '$ctrl',
           });
         }
       }, function(error) {
-        var modalInstance = $uibModal.open({
-            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
-
-          // templateUrl: 'views/successModel.html',
-          size: 'md',
-          controller: function($scope) {
-            $scope.message = error.error;
+         $scope.message = error.error;
             $scope.title = "Right my diet";
-            $scope.ok = function() {
-              modalInstance.close();
-            };
-          }
+        var modalInstance = $uibModal.open({
+            // template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+
+          templateUrl: 'views/successModel.html',
+          size: 'md',
+            scope:$scope,
+          controller: 'ModalInstanceCtrl',
+          controllerAs: '$ctrl',
         });
       });
     };

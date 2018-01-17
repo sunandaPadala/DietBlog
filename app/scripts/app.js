@@ -30,7 +30,8 @@ angular
     'someElseSetting': 'settingValue',
     'itemsPerPage': 4
     //other setting will also be there.
-  }).config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  }).config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,$qProvider) {
+      $qProvider.errorOnUnhandledRejections(false);
     $httpProvider.interceptors.push('LoadingInterceptor');
     $urlRouterProvider.otherwise('/blog/1');
     $stateProvider.state('main', {

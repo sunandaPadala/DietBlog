@@ -1,4 +1,16 @@
 'use strict';
+angular.module('dietBlog').controller('ModalInstanceCtrl', function ($scope,$uibModalInstance) {
+  var $ctrl = this;
+  
+  console.log($scope);
+  $scope.ok = function () {
+    $uibModalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+});
 angular.module('dietBlog')
   .controller('mainviewCtrl', ['$scope', 'mainviewData', '$window', 'mainViewService', '$uibModal', '$state', 'tagsService', function($scope, mainviewData, $window, mainViewService, $uibModal, $state, tagsService) {
     $scope.mainviewData = mainviewData;
@@ -70,31 +82,28 @@ angular.module('dietBlog')
       if ($scope.usersubscrip !== "") {
         mainViewService.subscribe(email).then(function(response) {
           console.log("loaded success");
+           $scope.message = response.data.message;
+             $scope.title = "Right my diet";
           var modalInstance = $uibModal.open({
-            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+            // template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+           templateUrl: 'views/successModel.html',
             size: 'md',
-            controller: function($scope) {
-              $scope.message = response.data.message;
-              $scope.title = "Right my diet";
-              $scope.ok = function() {
-                modalInstance.close();
-              };
-            }
+            scope:$scope,
+            controller: 'ModalInstanceCtrl',
+             controllerAs: '$ctrl',
           });
 
         }, function(msg) {
-          var modalInstance = $uibModal.open({
-            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
-            
-            // templateUrl: 'views/successModel.html',
-            size: 'md',
-            controller: function($scope) {
-              $scope.message = msg;
+           $scope.message = msg;
               $scope.title = "Right my diet";
-              $scope.ok = function() {
-                modalInstance.close();
-              };
-            }
+          var modalInstance = $uibModal.open({
+            // template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+            
+            templateUrl: 'views/successModel.html',
+            size: 'md',
+              scope:$scope,
+            controller: 'ModalInstanceCtrl',
+             controllerAs: '$ctrl',
           });
         });
       } else {
@@ -114,7 +123,7 @@ angular.module('dietBlog')
     };
     $scope.getTagArticles = function(tagName) {
       $state.go('main.tagArticles', { tagName: tagName,page:1 });
-    }
+    };
     $scope.loadBlogDetails = function(pic) {
       $state.go('main.blogDetails', { id: pic.id });
     };
