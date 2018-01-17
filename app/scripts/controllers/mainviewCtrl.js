@@ -69,8 +69,9 @@ angular.module('dietBlog')
     $scope.usersubscribe = function(email) {
       if ($scope.usersubscrip !== "") {
         mainViewService.subscribe(email).then(function(response) {
+          console.log("loaded success");
           var modalInstance = $uibModal.open({
-            templateUrl: '../views/successModel.html',
+            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
             size: 'md',
             controller: function($scope) {
               $scope.message = response.data.message;
@@ -83,7 +84,9 @@ angular.module('dietBlog')
 
         }, function(msg) {
           var modalInstance = $uibModal.open({
-            templateUrl: '../views/successModel.html',
+            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+            
+            // templateUrl: 'views/successModel.html',
             size: 'md',
             controller: function($scope) {
               $scope.message = msg;

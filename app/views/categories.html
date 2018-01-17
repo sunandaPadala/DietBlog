@@ -1,6 +1,6 @@
 <div class="container" style="padding-top:90px;">
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-    <h2 ng-if="!issearch&&!noResults" class="align-center" style="color:black;position: relative;top:-14px;margin-bottom:14px;">Articles under the category: <b>{{categoryData[0].category}}</b></h2>
+    <h2 ng-if="!issearch&&!noResults" style="color:black;position: relative;top:-14px;margin-bottom:14px;">{{categoryData[0].category}}</h2>
     <h3 ng-if="noResults" class="align-center">No articles were found for <b>{{formData.searchString}}</b></h3>
     <h3 ng-if="!noResults&&issearch" class="align-center">Results for <b>{{formData.searchString}}</b></h3>
     <div>

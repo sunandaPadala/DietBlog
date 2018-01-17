@@ -1,115 +1,98 @@
-<div class="container" style="padding-top:80px;">
-  <h2 class="align-center"> Book Appointment </h2>
-  <form class="form-horizontal diet-form" name="myForm" id="myForm" role="form">
-    <div class="form-group">
-      <label for="name" class="col-sm-3 control-label">Name</label>
-      <div class="col-sm-6">
-        <input required type="text" id="name" class="form-control" ng-model="name" />
+<div class="container" style="padding-top:30px;">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <!-- Contact Form Section Begins -->
+      <div class="contact-form pad-top-big pad-bottom-big">
+        <h2> Book Appointment </h2>
+        <form name="myForm" id="myForm" role="form">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-left">
+            <div class="form-group">
+              <input type="text" placeholder="Name" ng-model="name" />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-right">
+            <div class="form-group">
+              <input required type="number" placeholder="Age" ng-model="age" />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-left">
+            <div class="form-group">
+              <select required="" ng-model="gender" style="">
+                <option value="" disabled="" selected="selected">Choose gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-right">
+            <div class="form-group">
+              <input type="text" placeholder="Height" ng-model="height" />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-left">
+            <div class="form-group">
+              <input type="text" placeholder="Weight" ng-model="weight" />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-right">
+            <div class="form-group">
+              <select required="" id="indian" ng-model="indian" style="">
+                <option value="" disabled="" selected="selected">Select your region</option>
+                <option value="South">South</option>
+                <option value="North">North</option>
+                <option value="South">East</option>
+                <option value="North">West</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-left">
+            <div class="form-group">
+              <select required="" ng-model="foodType" style="">
+                <option value="" disabled="" selected="selected">Choose food type</option>
+                <option value="veg">Vegeterian</option>
+                <option value="nonveg">Non-Vegeterian</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-right">
+            <div class="form-group">
+              <select required=""  ng-model="currentAilments" style="">
+                <option value="" disabled="" selected="selected">Any ailments</option>
+                <option value='true'>Yes</option>
+                <option value='false'>No</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-left">
+            <div class="form-group">
+              <input required type="email" placeholder="Email" ng-model="email" />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-pad-right">
+            <div class="form-group">
+              <select required="" ng-model="doctor" style="">
+                <option value="" disabled="" selected="selected">Choose doctor</option>
+                <option value="doctor1">Doctor 1</option>
+                <option value="doctor2">Doctor 2</option>
+                <option value="doctor3">Doctor 3</option>
+                <option value="doctor4">Doctor 4</option>
+                <option value="doctor5">Doctor 5</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+            <div class="form-group">
+              <textarea placeholder="Comment" ng-model="comment"></textarea>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+            <div class="form-group contactus-btn">
+              <button class="cntct-btn" ng-click="bookAppointment($event)" ng-disabled="myForm.$invalid"> Book Appointment </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="col-sm-3"></div>
+      <!-- Contact Form Section Ends -->
     </div>
-    <div class="form-group">
-      <label for="age" class="col-sm-3 control-label">Age</label>
-      <div class="col-sm-6">
-        <input required type="number" id="age" class="form-control" ng-model="age" />
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group">
-      <label for="gender" class="col-sm-3 control-label">Gender</label>
-      <div class="col-sm-6">
-        <switch id="isMale" name="isMale" ng-model="isMale" class="green wider" on="Male" off="Female"></switch>
-        <!-- <br>
-        <div class="radio col-sm-3">
-          <label>
-            <input required value="male" type="radio" name="gender" ng-model="gender" />Male</label>
-        </div>
-        <div class="radio col-sm-3">
-          <label>
-            <input required value="female" type="radio" name="gender" ng-model="gender" />Female</label>
-        </div> -->
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group">
-      <label for="height" class="col-sm-3 control-label">Height</label>
-      <div class="col-sm-6">
-        <input required type="text" id="height" class="form-control" ng-model="height" />
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group">
-      <label for="weight" class="col-sm-3 control-label">Weight</label>
-      <div class="col-sm-6">
-        <input required type="text" id="weight" class="form-control" ng-model="weight" />
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group">
-      <label for="indian" class="col-sm-3 control-label">Region</label>
-      <div class="col-sm-2">
-        <select required id="indian" class="form-control" ng-model="indian">
-          <option value="" disabled selected>Select your option</option>
-          <option value="South">South</option>
-          <option value="North">North</option>
-          <option value="South">East</option>
-          <option value="North">West</option>
-        </select>
-      </div>
-      <div class="col-sm-7"></div>
-    </div>
-    <div class="form-group">
-      <label for="foodType" class="col-sm-3 control-label">Food type</label>
-      <div class="col-sm-6">
-        <switch id="isNv" name="isNv" ng-model="isNv" class="green wider" on="Non-Veg" off="Veg"></switch>
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group">
-      <label for="currentAilments" class="col-sm-3 control-label">Current Ailments</label>
-      <div class="col-sm-6">
-        <switch id="currentAilments" name="currentAilments" ng-model="currentAilments" class="green wide" ng-change="changeCallback" on="Yes" off="No"></switch>
-        <!--  <div class="radio col-sm-3">
-          <label>
-            <input required value="yes" type="radio" name="currentAilments" ng-model="currentAilments" />Yes</label>
-        </div>
-        <div class="radio col-sm-3">
-          <label>
-            <input required value="no" type="radio" name="currentAilments" ng-model="currentAilments" />No</label>
-        </div> -->
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group" ng-if="isDetail">
-      <label for="duration" class="col-sm-3 control-label">Since when and what</label>
-      <div class="col-sm-6">
-        <textarea required class="form-control" id="duration" rows="3" ng-model="$parent.duration"></textarea>
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group">
-      <label for="email" class="col-sm-3 control-label">Email</label>
-      <div class="col-sm-6">
-        <input required type="email" id="email" class="form-control" ng-model="email" />
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-    <div class="form-group">
-      <label for="doctor" class="col-sm-3 control-label">Choose doctor</label>
-      <div class="col-sm-2">
-        <select required id="doctor" class="form-control" ng-model="doctor">
-          <option value="" disabled selected>Select your option</option>
-          <option value="doctor1">Doctor 1</option>
-          <option value="doctor2">Doctor 2</option>
-          <option value="doctor3">Doctor 3</option>
-          <option value="doctor4">Doctor 4</option>
-          <option value="doctor5">Doctor 5</option>
-        </select>
-      </div>
-      <div class="col-sm-7"></div>
-    </div>
-    <div class="form-group" style="text-align: center;">
-      <button class="btn btn-primary submit" ng-click="bookAppointment($event)" ng-disabled="myForm.$invalid" type="button">Submit</button>
-    </div>
-  </form>
+  </div>
 </div>

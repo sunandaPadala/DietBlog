@@ -1,6 +1,5 @@
 'use strict';
-var app = angular.module('dietBlog');
-app.service('categoryService', ['$q', '$http', 'configSettings', function($q, $http, configSettings) {
+angular.module('dietBlog').service('categoryService', ['$q', '$http', 'configSettings', function($q, $http, configSettings) {
 
   this.getArticlesByCategory = function(categoryId, skip, limit) {
     var deferred = $q.defer();

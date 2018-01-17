@@ -13,9 +13,9 @@
 
 angular
   .module('dietBlog', [
-    'ui.bootstrap',
     'ngAnimate',
     'ngSanitize',
+     'ui.bootstrap',
     'ngCookies',
     'ngResource',
     'ngTouch',

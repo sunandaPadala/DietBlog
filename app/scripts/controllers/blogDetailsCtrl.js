@@ -20,7 +20,9 @@ angular.module('dietBlog')
 
           var mess = "Comments posted successfully.You can view once admin accept the comment."
           var modalInstance = $uibModal.open({
-            templateUrl: '../views/successModel.html',
+            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+            
+            // templateUrl: 'views/successModel.html',
             size: 'md',
             controller: function($scope) {
               $scope.message = mess;
@@ -33,7 +35,9 @@ angular.module('dietBlog')
         }
       }, function(error) {
         var modalInstance = $uibModal.open({
-          templateUrl: '../views/successModel.html',
+            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+
+          // templateUrl: 'views/successModel.html',
           size: 'md',
           controller: function($scope) {
             $scope.message = error.error;

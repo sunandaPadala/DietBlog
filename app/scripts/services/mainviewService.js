@@ -1,6 +1,5 @@
 'use strict';
-var app = angular.module('dietBlog');
-app.service('mainViewService', ['$q', '$http', 'configSettings', function($q, $http, configSettings) {
+angular.module('dietBlog').service('mainViewService', ['$q', '$http', 'configSettings', function($q, $http, configSettings) {
   this.recentPosts = function() {
 
     var deferred = $q.defer();

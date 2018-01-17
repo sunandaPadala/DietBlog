@@ -1,6 +1,5 @@
 'use strict';
-var app = angular.module('dietBlog');
-app.service('tagsService', ['$q', '$http', 'configSettings', function($q, $http, configSettings) {
+angular.module('dietBlog').service('tagsService', ['$q', '$http', 'configSettings', function($q, $http, configSettings) {
 
   this.getAllTagsList = function() {
     var deferred = $q.defer();

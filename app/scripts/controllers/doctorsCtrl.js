@@ -3,7 +3,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
   $scope.doctorsList = [{
       "title": "Anjali Vishwanath",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor1.png'],
+      "images": ['images/doctor1.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [
@@ -28,7 +28,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     {
       "title": "Gurunath Khandale",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor2.png'],
+      "images": ['images/doctor2.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [],
@@ -51,7 +51,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     }, {
       "title": "Anjali Vishwanath",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor1.png'],
+      "images": ['images/doctor1.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [
@@ -76,7 +76,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     {
       "title": "Gurunath Khandale",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor2.png'],
+      "images": ['images/doctor2.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [],
@@ -99,7 +99,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     }, {
       "title": "Anjali Vishwanath",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor1.png'],
+      "images": ['images/doctor1.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [
@@ -124,7 +124,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     {
       "title": "Gurunath Khandale",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor2.png'],
+      "images": ['images/doctor2.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [],
@@ -147,7 +147,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     }, {
       "title": "Anjali Vishwanath",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor1.png'],
+      "images": ['images/doctor1.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [
@@ -172,7 +172,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     {
       "title": "Gurunath Khandale",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor2.png'],
+      "images": ['images/doctor2.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [],
@@ -195,7 +195,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     }, {
       "title": "Anjali Vishwanath",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor1.png'],
+      "images": ['images/doctor1.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [
@@ -220,7 +220,7 @@ angular.module('dietBlog').controller('doctorsCtrl', ['$scope', function($scope)
     {
       "title": "Gurunath Khandale",
       "description": "<p>Anjali has a Master of Science in nutrition from Osmania University, Hyderabad. She is aregistered dietitian with the NIN and a  member of Indian Dietetic Association.<br/>Has twelve years practice in hospital dietetics as well as public health and early intervention dietetic besides coordinating care between families, physicians and other medical professionals.</p>\n",
-      "images": ['../../images/doctor2.png'],
+      "images": ['images/doctor2.png'],
       "videos": [],
       "category": "Fitness",
       "tags": [],

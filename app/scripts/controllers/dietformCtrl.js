@@ -9,35 +9,38 @@ angular.module('dietBlog').controller('dietFormCtrl', ['$scope', 'mainViewServic
   };
   $scope.bookAppointment = function(event) {
     event.stopPropagation();
-    if ($scope.isMale)
-      var gender = "male";
-    else
-      var gender = "female";
-    if ($scope.isNv)
-      var foodType = "nonveg";
-    else
-      foodType = "veg";
+    // if ($scope.isMale)
+    //   var gender = "male";
+    // else
+    //   var gender = "female";
+    // if ($scope.isNv)
+    //   var foodType = "nonveg";
+    // else
+    //   foodType = "veg";
     var dataObj = {
       ailments: $scope.currentAilments,
       age: $scope.age,
       email: $scope.email,
       name: $scope.name,
-      gender: gender,
+      gender: $scope.gender,
       height: $scope.height,
       weight: $scope.weight,
       region: $scope.indian,
-      foodType: foodType,
+      foodType: $scope.foodType,
       doctor: {
         name: $scope.doctor
-      }
+      },
+      description: $scope.comment
     };
-    if ($scope.currentAilments) {
-      dataObj.description = $scope.duration;
-    }
+    // if ($scope.currentAilments) {
+    //   dataObj.description = $scope.duration;
+    // }
     // alert("submit");
     mainViewService.bookAnAppointment(dataObj).then(function(response) {
       var modalInstance = $uibModal.open({
-        templateUrl: '../views/successModel.html',
+            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+
+        // templateUrl: 'views/successModel.html',
         size: 'md',
         controller: function($scope) {
           $scope.message = response.data.message;
@@ -50,7 +53,9 @@ angular.module('dietBlog').controller('dietFormCtrl', ['$scope', 'mainViewServic
     }, function(error) {
       console.log(error + "error");
       var modalInstance = $uibModal.open({
-        templateUrl: '../views/successModel.html',
+            template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
+        
+        // templateUrl: 'views/successModel.html',
         size: 'md',
         controller: function($scope) {
           $scope.message = error.message;
