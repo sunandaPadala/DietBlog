@@ -39,7 +39,7 @@ angular.module('dietBlog').controller('dietFormCtrl', ['$scope', 'mainViewServic
     mainViewService.bookAnAppointment(dataObj).then(function(response) {
       console.log("success",$uibModal);
        $scope.message = response.data.message;
-          $scope.title = "Right my diet";
+          $scope.title = $scope.doctor;
       var modalInstance = $uibModal.open({
             // template: '<div class="modal-header"><h3 class="modal-title" id="modal-title">{{title}}</h3></div><div class="modal-body" id="modal-body">{{message}}</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button></div>',
 

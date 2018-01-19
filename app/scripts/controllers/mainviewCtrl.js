@@ -1,10 +1,16 @@
 'use strict';
-angular.module('dietBlog').controller('ModalInstanceCtrl', function ($scope,$uibModalInstance) {
+angular.module('dietBlog').controller('ModalInstanceCtrl', function ($scope,$uibModalInstance,$state) {
   var $ctrl = this;
   
   console.log($scope);
   $scope.ok = function () {
+    if($scope.doctor){
     $uibModalInstance.close();
+    $state.go('main.blog',{page:1});
+    }else{
+    $uibModalInstance.close();
+
+    }
   };
 
   $scope.cancel = function () {

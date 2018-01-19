@@ -1996,6 +1996,21 @@ blockquote p span {
 .contact-form .form-group .cntct-btn:hover {
     background-color: black;
 }
+.cntct-btn-grn{
+    display: inline-block;
+    border: 0;
+    color: #ffffff;
+    font-size: 14px;
+    background-color: #a1cc3b;
+    font-weight: 700;
+    letter-spacing: 1.12px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 14.5px 39.5px;
+    text-transform: uppercase;
+}
+.cntct-btn-grn:hover{
+    background-color: black;
+}
 
 .user-loggedin {
   color: #b9b9b9;
